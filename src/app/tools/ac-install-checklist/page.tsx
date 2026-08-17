@@ -5,7 +5,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "冷氣安裝避坑檢核表",
   description:
-    "第一線安裝實務整理：購買前、安裝當天、驗收後 7 項必查。現場施工細節，AI 和內容農場寫不出來的避坑清單。",
+    "購買前、安裝當天、驗收後 7 項必查。室外機、排水、管長、保固，安裝當天可以勾。",
   path: "/tools/ac-install-checklist",
   keywords: ["冷氣安裝", "冷氣避坑", "冷氣施工", "冷氣驗收"],
 });

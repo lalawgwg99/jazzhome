@@ -114,13 +114,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <div className="mt-10">
           <LineCta variant="banner" />
         </div>
-
-        <footer className="mt-12 rounded-lg bg-amber-50 p-5 text-sm text-amber-900">
-          <p className="font-medium">📌 方格子同步說明</p>
-          <p className="mt-2 leading-6">
-            本文完整版首發於本站。若你在方格子看到摘要版，歡迎點擊「阅读原文」回到本站取得最新更新。
-          </p>
-        </footer>
       </article>
     </>
   );

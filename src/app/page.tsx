@@ -2,12 +2,15 @@ import Link from "next/link";
 import { ArticleCard } from "@/components/ArticleCard";
 import { CategoryCard } from "@/components/CategoryCard";
 import { LineCta } from "@/components/LineCta";
+import { FaqSection } from "@/components/FaqSection";
+import { JsonLd } from "@/components/JsonLd";
 import { MonetizationFunnel } from "@/components/MonetizationFunnel";
 import { TrustPillars } from "@/components/TrustPillars";
 import { categories } from "@/lib/categories";
 import { getLatestArticles } from "@/lib/articles";
+import { faqs } from "@/lib/faq";
 import { tools } from "@/lib/tools";
-import { buildMetadata } from "@/lib/seo";
+import { buildFaqJsonLd, buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
@@ -89,12 +92,15 @@ export default function HomePage() {
 
       <TrustPillars />
 
+      <JsonLd data={buildFaqJsonLd(faqs)} />
+      <FaqSection />
+
       <MonetizationFunnel />
 
       <section className="bg-zinc-50 px-4 py-14">
         <div className="mx-auto max-w-5xl">
           <h2 className="text-2xl font-bold text-zinc-900">最新文章</h2>
-          <p className="mt-2 text-zinc-600">型錄核實 · 現場實務 · 首發於本站</p>
+          <p className="mt-2 text-zinc-600">型錄核實 · 現場實務</p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
             {latestArticles.map((article) => (
               <ArticleCard key={article.slug} article={article} />

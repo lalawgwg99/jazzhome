@@ -55,8 +55,8 @@ export function Footer() {
           <div>
             <p className="font-semibold text-zinc-900">JazzHome 家電研究室</p>
             <p className="mt-2 text-sm leading-6 text-zinc-600">
-              冷氣、冰箱、洗衣機、電視選購攻略。內容首發於本站，掌握 SEO
-              與數據追蹤主導權。
+              冷氣選購與安裝避坑。用計算器估噸數，用檢核表對施工，不確定再把現場條件傳到
+              LINE。
             </p>
           </div>
           <div>

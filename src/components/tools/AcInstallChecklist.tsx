@@ -125,15 +125,17 @@ export function AcInstallChecklist() {
         ))}
       </div>
 
-      {progress === 100 && (
-        <div className="mt-8">
-          <LineCta
-            variant="banner"
-            title="全部確認完成！還有疑問？"
-            description="現場條件複雜（如管線超長、特殊牆面）建議加 LINE 一對一評估，避免安裝後才後悔。"
-          />
-        </div>
-      )}
+      <div className="mt-8">
+        <LineCta
+          variant="banner"
+          title={
+            progress === 100
+              ? "項目都勾完了，還有現場條件不確定？"
+              : "有項目勾不下去？先問再裝"
+          }
+          description="室外機位置、排水路徑、管線超長、特殊牆面，這些看照片比較準。傳到 LINE，我們依施工條件回你。"
+        />
+      </div>
     </div>
   );
 }

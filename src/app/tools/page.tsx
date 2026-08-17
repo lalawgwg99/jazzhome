@@ -15,7 +15,7 @@ export default function ToolsPage() {
     <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="text-3xl font-bold text-zinc-900">選購工具</h1>
       <p className="mt-4 max-w-2xl text-lg text-zinc-600">
-        互動式計算工具搶佔工具型搜尋關鍵字，並從工具頁導流至深度文章。
+        先用計算器估規格，再用檢核表對施工。數字對不上再把現場條件傳到 LINE。
       </p>
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
         {tools.map((tool) => (

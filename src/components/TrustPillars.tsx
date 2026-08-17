@@ -1,5 +1,5 @@
 import type { ArticleVerification } from "@/lib/trust";
-import { verificationLabels } from "@/lib/trust";
+import { trustPillars, verificationLabels } from "@/lib/trust";
 
 interface VerifiedBadgeProps {
   verification: ArticleVerification;
@@ -39,26 +39,7 @@ interface TrustPillarsProps {
 }
 
 export function TrustPillars({ compact = false }: TrustPillarsProps) {
-  const pillars = [
-    {
-      title: "原廠型錄逐項核實",
-      description:
-        "不照抄業配文。每一項規格對照原廠型錄確認，抓出網路錯誤資訊。",
-      icon: "✓",
-    },
-    {
-      title: "第一線安裝實務",
-      description:
-        "懂施工限制、客訴痛點、門市運作。現場避坑心得轉成檢核表。",
-      icon: "🔧",
-    },
-    {
-      title: "信任驅動轉換",
-      description:
-        "先解決「不知道怎麼挑」與「怕被坑」，再導向諮詢或比價。",
-      icon: "🤝",
-    },
-  ];
+  const pillars = trustPillars;
 
   if (compact) {
     return (
@@ -81,7 +62,7 @@ export function TrustPillars({ compact = false }: TrustPillarsProps) {
         <p className="text-sm font-medium text-emerald-400">只說真話</p>
         <h2 className="mt-2 text-2xl font-bold">為什麼 JazzHome 不一樣？</h2>
         <p className="mt-2 max-w-2xl text-zinc-400">
-          市面家電文多是內容農場或照抄型錄。我們切入資訊不對稱與安裝風險兩大痛點。
+          市面家電文多在推型號。這裡先把安裝會出事的地方講清楚，再決定要不要買。
         </p>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {pillars.map((p) => (

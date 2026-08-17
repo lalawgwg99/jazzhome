@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LineCta } from "@/components/LineCta";
 
 export function AcCalculator() {
   const [ping, setPing] = useState(4);
@@ -83,8 +84,16 @@ export function AcCalculator() {
           市售常見機種建議選 <strong>{suggested} 噸</strong>（略大於估算值，冷房效果較穩定）
         </p>
         <p className="mt-3 text-xs text-blue-600">
-          * 此為快速估算，實際仍需考量窗戶數、人數、熱源設備等因素，安裝前請諮詢技師。
+          * 此為快速估算，實際仍需考量窗戶數、人數、熱源設備等因素。室外機位置與排水對了，噸數才有意義。
         </p>
+      </div>
+
+      <div className="mt-6">
+        <LineCta
+          variant="banner"
+          title="這個噸數適不適合你的現場？"
+          description={`目前估算約 ${recommended} 噸，市售可選 ${suggested} 噸。把房間照片或格局圖傳到 LINE，我們幫你看室外機與排水能不能這樣裝。`}
+        />
       </div>
     </div>
   );

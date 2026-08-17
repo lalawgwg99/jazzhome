@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TvDistanceCalculator } from "@/components/tools/TvDistanceCalculator";
+import { LineCta } from "@/components/LineCta";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -28,6 +29,13 @@ export default function TvDistancePage() {
       </p>
       <div className="mt-8">
         <TvDistanceCalculator />
+      </div>
+      <div className="mt-8">
+        <LineCta
+          variant="banner"
+          title="客廳深度或牆面有限制？"
+          description="電視吋數可以先算。若要連冷氣室外機、排水一起看格局，把照片傳到 LINE。"
+        />
       </div>
       <p className="mt-8 text-sm text-zinc-500">
         延伸閱讀：
