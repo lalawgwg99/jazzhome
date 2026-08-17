@@ -5,4 +5,5 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://jazzhome.pages.dev",
   locale: "zh-TW",
   author: "JazzHome 家電研究室",
+  gaId: process.env.NEXT_PUBLIC_GA_ID ?? "G-C6ERB7BXRR",
 } as const;
