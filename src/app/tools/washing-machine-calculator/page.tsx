@@ -1,21 +1,21 @@
 import Link from "next/link";
-import { TvDistanceCalculator } from "@/components/tools/TvDistanceCalculator";
+import { WashingMachineCalculator } from "@/components/tools/WashingMachineCalculator";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata, buildBreadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "電視觀看距離與 4K 最佳吋數計算器",
+  title: "洗衣機容量與選型決策器",
   description:
-    "依沙發距離或預計購買電視尺寸，科學計算 4K UHD 最佳視角（THX 40° 劇院沉浸 / SMPTE 30° 日常視野），告別頭暈與買太小後悔。",
-  path: "/tools/tv-distance",
-  keywords: ["電視觀看距離", "電視尺寸計算", "65吋電視距離", "75吋電視距離", "4K最佳視野", "電視吋數推薦"],
+    "依同住人數、被單床包清洗頻率與陽台通風環境，評估建議洗衣容量（kg）與滾筒 vs 直立式決策矩陣。",
+  path: "/tools/washing-machine-calculator",
+  keywords: ["洗衣機公斤數計算", "洗衣機容量", "滾筒洗衣機", "直立洗衣機", "洗脫烘一體", "熱泵乾衣機"],
 });
 
-export default function TvDistancePage() {
+export default function WashingMachineCalculatorPage() {
   const breadcrumb = buildBreadcrumbJsonLd([
     { name: "首頁", path: "/" },
     { name: "選購工具", path: "/tools" },
-    { name: "電視觀看距離計算器", path: "/tools/tv-distance" },
+    { name: "洗衣機容量與選型決策器", path: "/tools/washing-machine-calculator" },
   ]);
 
   return (
@@ -31,39 +31,39 @@ export default function TvDistancePage() {
             選購工具
           </Link>
           <span>/</span>
-          <span className="text-[#1C1C1E] font-medium">電視觀看距離</span>
+          <span className="text-[#1C1C1E] font-medium">洗衣機容量與選型</span>
         </nav>
 
         <div className="mt-4 max-w-2xl">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#0071E3]/10 px-3 py-1 text-xs font-semibold text-[#0071E3]">
-            <span>📺</span>
-            <span>THX & SMPTE 國際視野標準算式</span>
+            <span>🫧</span>
+            <span>公斤數換算 · 滾筒 vs 直立決策</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
-            電視觀看距離與尺寸計算器
+            洗衣機容量與選型決策器
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-[#636366]">
-            依客廳沙發淨距離科學試算黃金吋數，提供 4K 劇院沉浸感（40° 視角）與日常通用（30° 視角）精確對照。
+            依同住人口數、換洗被單頻率與陽台曬衣環境，試算建議最低洗衣公斤數（kg），並提供滾筒洗脫烘 vs 直立變頻客觀決策。
           </p>
         </div>
 
         <div className="mt-8">
-          <TvDistanceCalculator />
+          <WashingMachineCalculator />
         </div>
 
         <div className="mt-10 border-t border-black/[0.06] pt-6 flex flex-wrap gap-4 text-xs text-[#636366]">
           <span>延伸閱讀指南：</span>
           <Link
-            href="/blog/tv-size-distance-guide"
+            href="/blog/washing-machine-drum-vs-top"
             className="text-[#0071E3] font-semibold hover:underline"
           >
-            電視幾吋才適合？客廳觀看距離對照表 →
+            滾筒洗衣機 vs 直立洗衣機：優缺點完整比較 →
           </Link>
           <Link
-            href="/blog/tv-oled-vs-qled"
+            href="/blog/washing-machine-capacity-guide"
             className="text-[#0071E3] font-semibold hover:underline"
           >
-            OLED vs QLED vs Mini-LED 面板選購全指南 →
+            洗衣機要買幾公斤？被單床包清洗容量對照表 →
           </Link>
         </div>
       </div>

@@ -1,21 +1,24 @@
 export const trustPillars = [
   {
-    title: "規格對照原廠型錄",
+    title: "原廠型錄數據核實",
     description:
-      "不照抄業配文。能核對的數字會寫出來源與日期，對不上的不寫。",
-    icon: "✓",
+      "拒絕照抄業配文。所有冷房 kW、CSPF 能效、公升數與視角距離，皆對照原廠技術手冊與能源署官方標章。",
+    icon: "􀇺", // Apple SF Symbol representation / checkmark
+    emoji: "✓",
   },
   {
-    title: "第一線安裝實務",
+    title: "第一線施工避坑整理",
     description:
-      "室外機、排水、管長、保固是現場最常出事的地方。客訴整理成檢核表，安裝當天可以勾。",
-    icon: "🔧",
+      "室外機散熱死角、排水坡度滲漏、銅管超長加價、洗洞避樑柱。將第一線爭議化為隨身檢核表，現場一對一勾選。",
+    icon: "􀙥",
+    emoji: "🔧",
   },
   {
-    title: "先講清楚再決定",
+    title: "客觀評估，絕不盲推",
     description:
-      "先解決「不知道怎麼挑」和「怕被坑」。需要看現場再加 LINE，不急著推型號。",
-    icon: "🤝",
+      "先算清楚規格、再看現場條件。不急著推薦特定品牌型號，只提供最符合你預算與居住環境的科學決策依據。",
+    icon: "􀎸",
+    emoji: "🤝",
   },
 ] as const;
 
@@ -30,18 +33,24 @@ export interface ArticleVerification {
 
 export const verificationLabels: Record<
   VerificationLevel,
-  { label: string; color: string }
+  { label: string; bg: string; text: string; border: string }
 > = {
   "spec-verified": {
-    label: "型錄核實",
-    color: "bg-emerald-100 text-emerald-800",
+    label: "原廠型錄核實",
+    bg: "bg-[#34C759]/10",
+    text: "text-[#248A3D]",
+    border: "border-[#34C759]/20",
   },
   "field-tested": {
-    label: "現場實務",
-    color: "bg-blue-100 text-blue-800",
+    label: "第一線實務驗證",
+    bg: "bg-[#007AFF]/10",
+    text: "text-[#0051A8]",
+    border: "border-[#007AFF]/20",
   },
   "myth-busted": {
-    label: "迷思破解",
-    color: "bg-amber-100 text-amber-800",
+    label: "選購迷思破解",
+    bg: "bg-[#FF9500]/10",
+    text: "text-[#B25000]",
+    border: "border-[#FF9500]/20",
   },
 };

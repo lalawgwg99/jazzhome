@@ -9,14 +9,14 @@ interface ProductRecommendationsProps {
 
 export function ProductRecommendations({
   products,
-  title = "推薦購買連結",
+  title = "規格對照商品與購買通路",
 }: ProductRecommendationsProps) {
   const activeProducts = products.filter((p) => p.url);
   if (activeProducts.length === 0) return null;
 
   return (
     <section className="mt-10">
-      <h2 className="text-lg font-semibold text-zinc-900">{title}</h2>
+      <h3 className="text-base font-bold text-[#1C1C1E]">{title}</h3>
       <AffiliateDisclosure className="mt-2" />
       <div className="mt-4 space-y-3">
         {activeProducts.map((product) => {
@@ -24,16 +24,23 @@ export function ProductRecommendations({
           return (
             <div
               key={`${product.platform}-${product.name}`}
-              className="flex flex-col gap-3 rounded-xl border border-zinc-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between"
+              className="apple-card flex flex-col gap-3 p-5 border border-black/[0.05] bg-white sm:flex-row sm:items-center sm:justify-between"
             >
-              <div>
-                <p className="font-medium text-zinc-900">{product.name}</p>
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`rounded px-2 py-0.5 text-xs font-semibold ${platform.tagBg} ${platform.tagText}`}
+                  >
+                    {platform.name}
+                  </span>
+                  <p className="font-semibold text-[#1C1C1E]">{product.name}</p>
+                </div>
                 {product.note && (
-                  <p className="mt-1 text-sm text-zinc-500">{product.note}</p>
+                  <p className="text-xs text-[#636366]">{product.note}</p>
                 )}
                 {product.price && (
-                  <p className="mt-1 text-sm font-medium text-zinc-700">
-                    {product.price}
+                  <p className="text-xs font-medium text-[#1C1C1E]">
+                    參考售價：{product.price}
                   </p>
                 )}
               </div>
@@ -41,7 +48,6 @@ export function ProductRecommendations({
                 href={product.url}
                 platform={product.platform}
                 label={platform.name}
-                colorClass={platform.color}
               />
             </div>
           );
@@ -55,16 +61,14 @@ function AffiliateButton({
   href,
   platform,
   label,
-  colorClass,
 }: {
   href: string;
   platform: string;
   label: string;
-  colorClass: string;
 }) {
   if (!href) {
     return (
-      <span className="text-xs text-zinc-400">連結設定中</span>
+      <span className="text-xs text-[#8E8E93]">通路連結整理中</span>
     );
   }
 
@@ -74,9 +78,10 @@ function AffiliateButton({
       target="_blank"
       rel="noopener noreferrer sponsored"
       data-affiliate={platform}
-      className={`inline-flex shrink-0 items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors ${colorClass}`}
+      className="apple-btn-active inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full bg-[#1C1C1E] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-black"
     >
-      前往 {label} →
+      <span>前往 {label} 查看</span>
+      <span>→</span>
     </a>
   );
 }

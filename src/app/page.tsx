@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArticleCard } from "@/components/ArticleCard";
 import { CategoryCard } from "@/components/CategoryCard";
-import { LineCta } from "@/components/LineCta";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { MonetizationFunnel } from "@/components/MonetizationFunnel";
@@ -18,10 +17,12 @@ export const metadata = buildMetadata({
   description: siteConfig.description,
   keywords: [
     "冷氣推薦",
+    "冷氣坪數計算",
+    "冷氣安裝避坑",
     "冰箱推薦",
     "洗衣機推薦",
-    "電視推薦",
-    "家電選購",
+    "電視觀看距離",
+    "家電選購指南",
   ],
 });
 
@@ -30,84 +31,151 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="border-b border-zinc-200 bg-gradient-to-b from-emerald-50 to-white px-4 py-16">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-sm font-medium text-emerald-700">
-            {siteConfig.tagline}
-          </p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-            JazzHome 家電研究室
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-zinc-600">
-            {siteConfig.description}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {tools.map((tool) => (
-              <Link
-                key={tool.slug}
-                href={`/tools/${tool.slug}`}
-                className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700"
-              >
-                {tool.icon} {tool.name}
-              </Link>
-            ))}
-            <LineCta variant="compact" />
+      <JsonLd data={buildFaqJsonLd(faqs)} />
+
+      {/* Hero Section - Apple Pure Elegance */}
+      <section className="relative overflow-hidden border-b border-black/[0.05] bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full bg-black/[0.04] px-3.5 py-1 text-xs font-semibold text-[#1C1C1E] border border-black/[0.06]">
+              <span className="flex h-2 w-2 rounded-full bg-[#0071E3]" />
+              <span>原廠型錄核實 · 現場實務避坑</span>
+            </div>
+
+            <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-[#1C1C1E] sm:text-5xl sm:leading-[1.15]">
+              把規格與施工講清楚，
+              <br className="hidden sm:inline" />
+              再決定要不要買。
+            </h1>
+
+            <p className="mt-5 text-base sm:text-lg leading-relaxed text-[#636366]">
+              {siteConfig.description}
+            </p>
+
+            {/* Quick Interactive Tool Launchers */}
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {tools.map((tool) => (
+                <Link
+                  key={tool.slug}
+                  href={`/tools/${tool.slug}`}
+                  className="apple-btn-active inline-flex items-center gap-2 rounded-full bg-[#F2F2F7] px-4 py-2 text-xs font-semibold text-[#1C1C1E] hover:bg-[#E5E5EA]"
+                >
+                  <span>{tool.icon}</span>
+                  <span>{tool.name}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-14">
-        <h2 className="text-2xl font-bold text-zinc-900">互動評估工具</h2>
-        <p className="mt-2 text-zinc-600">
-          可直接使用的計算器與檢核表，解決「不知道怎麼挑」的焦慮
-        </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {tools.map((tool) => (
-            <Link
-              key={tool.slug}
-              href={`/tools/${tool.slug}`}
-              className="rounded-xl border border-zinc-200 bg-white p-5 transition-shadow hover:shadow-md"
-            >
-              <span className="text-2xl">{tool.icon}</span>
-              <h3 className="mt-2 font-semibold text-zinc-900">{tool.name}</h3>
-              <p className="mt-1 text-sm leading-6 text-zinc-600">
-                {tool.description}
+      {/* Interactive Tools Section */}
+      <section className="py-14 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+                即開即用
               </p>
+              <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
+                互動選購評估工具
+              </h2>
+            </div>
+            <Link
+              href="/tools"
+              className="text-xs font-semibold text-[#0071E3] hover:underline"
+            >
+              查看全部工具 →
             </Link>
-          ))}
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {tools.map((tool) => (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}`}
+                className="apple-card apple-btn-active group flex flex-col justify-between p-6 border border-black/[0.05] bg-white hover:border-[#0071E3]/30"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-3xl">{tool.icon}</span>
+                    {tool.badge && (
+                      <span className="rounded-full bg-[#0071E3]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[#0071E3]">
+                        {tool.badge}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-4 font-bold text-[#1C1C1E] group-hover:text-[#0071E3] transition-colors">
+                    {tool.name}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-[#636366]">
+                    {tool.description}
+                  </p>
+                </div>
+
+                <div className="mt-6 flex items-center justify-between border-t border-black/[0.04] pt-3 text-[11px]">
+                  <span className="text-[#8E8E93]">{tool.summary}</span>
+                  <span className="font-semibold text-[#0071E3]">試算 ›</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-14">
-        <h2 className="text-2xl font-bold text-zinc-900">四大品類</h2>
-        <p className="mt-2 text-zinc-600">
-          原廠型錄核實 · 現場實務避坑 · 不照抄業配文
-        </p>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          {categories.map((cat) => (
-            <CategoryCard key={cat.slug} category={cat} />
-          ))}
+      {/* Four Appliance Categories */}
+      <section className="py-14 sm:py-16 bg-white border-y border-black/[0.05]">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+              權威指南
+            </p>
+            <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
+              四大品類選購研究
+            </h2>
+            <p className="mt-2 text-sm text-[#636366]">
+              型錄規格核實 · 第一線施工避坑 · 拒絕照抄業配文
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {categories.map((cat) => (
+              <CategoryCard key={cat.slug} category={cat} />
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* Trust Pillars */}
       <TrustPillars />
 
-      <JsonLd data={buildFaqJsonLd(faqs)} />
-      <FaqSection />
+      {/* Latest Articles Section */}
+      <section className="py-14 sm:py-16 bg-white border-y border-black/[0.05]">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+                精選文章
+              </p>
+              <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
+                最新家電研究指南
+              </h2>
+            </div>
+          </div>
 
-      <MonetizationFunnel />
-
-      <section className="bg-zinc-50 px-4 py-14">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-2xl font-bold text-zinc-900">最新文章</h2>
-          <p className="mt-2 text-zinc-600">型錄核實 · 現場實務</p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {latestArticles.map((article) => (
               <ArticleCard key={article.slug} article={article} />
             ))}
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FaqSection />
+
+      {/* Monetization Funnel */}
+      <MonetizationFunnel />
     </>
   );
 }

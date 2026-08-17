@@ -1,4 +1,3 @@
-import { Noto_Sans_TC } from "next/font/google";
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { Footer, Header } from "@/components/Layout";
@@ -6,21 +5,19 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const notoSansTC = Noto_Sans_TC({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-noto-sans-tc",
-});
-
 export const metadata: Metadata = buildMetadata({
   title: siteConfig.name,
   description: siteConfig.description,
 });
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="zh-Hant-TW" className={`${notoSansTC.variable} h-full`}>
-      <body className="flex min-h-full flex-col bg-zinc-50 font-sans text-zinc-900 antialiased">
+    <html lang="zh-Hant-TW" className="h-full scroll-smooth">
+      <body className="flex min-h-full flex-col bg-[#F2F2F7] text-[#1C1C1E] antialiased selection:bg-[#0071E3]/15 selection:text-[#0071E3]">
         <GoogleAnalytics />
         <Header />
         <main className="flex-1">{children}</main>

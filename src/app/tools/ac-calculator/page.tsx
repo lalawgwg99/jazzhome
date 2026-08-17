@@ -1,43 +1,72 @@
 import Link from "next/link";
 import { AcCalculator } from "@/components/tools/AcCalculator";
-import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import { buildMetadata, buildBreadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "冷氣坪數計算器",
+  title: "冷氣坪數與噸數計算器",
   description:
-    "免費線上冷氣坪數計算器。輸入房間坪數、頂樓、西曬條件，快速估算建議冷氣噸數。",
+    "免費線上冷氣坪數計算器。輸入房間坪數、頂樓、西曬、挑高開放條件，精準試算建議冷房能力（kW / 噸數）與 CSPF 能效選購指引。",
   path: "/tools/ac-calculator",
-  keywords: ["冷氣坪數計算", "冷氣噸數", "1坪幾噸冷氣", "冷氣容量計算"],
+  keywords: ["冷氣坪數計算", "冷氣噸數", "1坪幾噸冷氣", "冷氣容量計算", "變頻冷氣噸數", "冷房能力kW"],
 });
 
 export default function AcCalculatorPage() {
+  const breadcrumb = buildBreadcrumbJsonLd([
+    { name: "首頁", path: "/" },
+    { name: "選購工具", path: "/tools" },
+    { name: "冷氣坪數與噸數計算器", path: "/tools/ac-calculator" },
+  ]);
+
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12">
-      <nav className="text-sm text-zinc-500">
-        <Link href="/tools" className="hover:text-zinc-800">
-          工具
-        </Link>
-        <span className="mx-2">/</span>
-        <span className="text-zinc-800">冷氣坪數計算器</span>
-      </nav>
-      <h1 className="mt-6 text-3xl font-bold text-zinc-900">
-        冷氣坪數計算器
-      </h1>
-      <p className="mt-4 text-zinc-600">
-        依台灣常見估算方式（1 坪 ≈ 0.05 噸）快速計算，並依環境條件調整。
-      </p>
-      <div className="mt-8">
-        <AcCalculator />
+    <>
+      <JsonLd data={breadcrumb} />
+      <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14">
+        <nav className="flex items-center gap-1.5 text-xs text-[#8E8E93]">
+          <Link href="/" className="hover:text-[#0071E3] transition-colors">
+            首頁
+          </Link>
+          <span>/</span>
+          <Link href="/tools" className="hover:text-[#0071E3] transition-colors">
+            選購工具
+          </Link>
+          <span>/</span>
+          <span className="text-[#1C1C1E] font-medium">冷氣坪數與噸數</span>
+        </nav>
+
+        <div className="mt-4 max-w-2xl">
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#0071E3]/10 px-3 py-1 text-xs font-semibold text-[#0071E3]">
+            <span>❄️</span>
+            <span>科學算式 · 原廠冷房能力 (kW) 對照</span>
+          </div>
+          <h1 className="mt-3 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
+            冷氣坪數與噸數計算器
+          </h1>
+          <p className="mt-2 text-sm leading-relaxed text-[#636366]">
+            依台灣建築實務（1 坪 ≈ 0.58 kW 冷房能力）精確估算，並依頂樓、西曬、挑高開放格局自動加成安全餘裕。
+          </p>
+        </div>
+
+        <div className="mt-8">
+          <AcCalculator />
+        </div>
+
+        <div className="mt-10 border-t border-black/[0.06] pt-6 flex flex-wrap gap-4 text-xs text-[#636366]">
+          <span>延伸閱讀指南：</span>
+          <Link
+            href="/blog/air-conditioner-tonnage-guide"
+            className="text-[#0071E3] font-semibold hover:underline"
+          >
+            冷氣坪數怎麼算？1 坪要幾噸冷氣一次搞懂（完整對照表） →
+          </Link>
+          <Link
+            href="/blog/inverter-vs-fixed-ac"
+            className="text-[#0071E3] font-semibold hover:underline"
+          >
+            變頻冷氣 vs 定頻冷氣：省電差多少？ →
+          </Link>
+        </div>
       </div>
-      <p className="mt-8 text-sm text-zinc-500">
-        延伸閱讀：
-        <Link
-          href="/blog/air-conditioner-tonnage-guide"
-          className="ml-1 text-blue-600 hover:underline"
-        >
-          冷氣坪數怎麼算？完整選購指南
-        </Link>
-      </p>
-    </div>
+    </>
   );
 }

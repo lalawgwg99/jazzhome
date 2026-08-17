@@ -6,8 +6,9 @@ interface AffiliateDisclosureProps {
 
 export function AffiliateDisclosure({ className = "" }: AffiliateDisclosureProps) {
   return (
-    <p className={`text-xs leading-5 text-zinc-400 ${className}`}>
+    <div className={`rounded-xl border border-black/[0.04] bg-[#F2F2F7]/60 p-3 text-xs leading-relaxed text-[#8E8E93] ${className}`}>
+      <span>ℹ️ </span>
       {monetization.affiliateDisclosure}
-    </p>
+    </div>
   );
 }

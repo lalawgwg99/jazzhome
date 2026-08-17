@@ -7,28 +7,32 @@ interface VerifiedBadgeProps {
 
 export function VerifiedBadge({ verification }: VerifiedBadgeProps) {
   return (
-    <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 p-4">
-      <div className="flex flex-wrap gap-2">
+    <div className="apple-card border border-black/[0.06] bg-[#F9F9FB] p-4 sm:p-5">
+      <div className="flex flex-wrap items-center gap-2">
         {verification.levels.map((level) => {
-          const { label, color } = verificationLabels[level];
+          const { label, bg, text, border } = verificationLabels[level];
           return (
             <span
               key={level}
-              className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${color}`}
+              className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${bg} ${text} ${border}`}
             >
-              {label}
+              <span className="text-[10px]">✓</span>
+              <span>{label}</span>
             </span>
           );
         })}
       </div>
       {verification.specSource && (
-        <p className="mt-2 text-xs text-zinc-600">
-          規格來源：{verification.specSource}
-          {verification.lastVerified && ` · 核實日期 ${verification.lastVerified}`}
+        <p className="mt-2.5 text-xs font-medium text-[#48484A]">
+          <span className="text-[#8E8E93]">規格驗證來源：</span>
+          {verification.specSource}
+          {verification.lastVerified && (
+            <span className="text-[#8E8E93]"> · 核實日期 {verification.lastVerified}</span>
+          )}
         </p>
       )}
       {verification.note && (
-        <p className="mt-1 text-xs leading-5 text-zinc-500">{verification.note}</p>
+        <p className="mt-1 text-xs leading-relaxed text-[#636366]">{verification.note}</p>
       )}
     </div>
   );
@@ -47,9 +51,10 @@ export function TrustPillars({ compact = false }: TrustPillarsProps) {
         {pillars.map((p) => (
           <span
             key={p.title}
-            className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-700"
+            className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-medium text-[#48484A] shadow-sm border border-black/[0.04]"
           >
-            {p.icon} {p.title}
+            <span className="text-[#0071E3]">{p.emoji}</span>
+            <span>{p.title}</span>
           </span>
         ))}
       </div>
@@ -57,24 +62,35 @@ export function TrustPillars({ compact = false }: TrustPillarsProps) {
   }
 
   return (
-    <section className="border-t border-zinc-200 bg-zinc-900 px-4 py-14 text-white">
-      <div className="mx-auto max-w-5xl">
-        <p className="text-sm font-medium text-emerald-400">只說真話</p>
-        <h2 className="mt-2 text-2xl font-bold">為什麼 JazzHome 不一樣？</h2>
-        <p className="mt-2 max-w-2xl text-zinc-400">
-          市面家電文多在推型號。這裡先把安裝會出事的地方講清楚，再決定要不要買。
-        </p>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+    <section className="py-14 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+            客觀實證 · 嚴謹核對
+          </p>
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
+            為什麼 JazzHome 值得你信任？
+          </h2>
+          <p className="mt-2 text-base text-[#636366]">
+            市面文章多為行銷推播與業配清單。我們回歸工程規範與原廠數據，只講真實規格與現場避坑。
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {pillars.map((p) => (
             <div
               key={p.title}
-              className="rounded-xl border border-zinc-700 bg-zinc-800/50 p-6"
+              className="apple-card p-6 border border-black/[0.05] bg-white flex flex-col justify-between"
             >
-              <span className="text-2xl">{p.icon}</span>
-              <h3 className="mt-3 font-semibold">{p.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-zinc-400">
-                {p.description}
-              </p>
+              <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#F2F2F7] text-lg text-[#0071E3]">
+                  {p.emoji}
+                </div>
+                <h3 className="mt-4 text-base font-semibold text-[#1C1C1E]">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#636366]">
+                  {p.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
