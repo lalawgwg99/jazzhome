@@ -3,6 +3,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { LineCta } from "@/components/LineCta";
 import { ProductRecommendations } from "@/components/ProductRecommendations";
+import { VerifiedBadge } from "@/components/TrustPillars";
 import {
   articles,
   getArticleBySlug,
@@ -90,6 +91,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <p className="mt-4 text-lg leading-8 text-zinc-600">
             {article.description}
           </p>
+          {article.verification && (
+            <div className="mt-6">
+              <VerifiedBadge verification={article.verification} />
+            </div>
+          )}
         </header>
 
         <div className="prose prose-zinc mt-8 max-w-none">

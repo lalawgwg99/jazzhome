@@ -1,5 +1,6 @@
 import type { CategorySlug } from "./categories";
 import type { AffiliateProduct } from "./monetization";
+import type { ArticleVerification } from "./trust";
 
 export interface Article {
   slug: string;
@@ -12,6 +13,7 @@ export interface Article {
   readingMinutes: number;
   content: string[];
   affiliateProducts?: AffiliateProduct[];
+  verification?: ArticleVerification;
 }
 
 export const articles: Article[] = [
@@ -24,6 +26,12 @@ export const articles: Article[] = [
     keywords: ["冷氣坪數", "冷氣噸數", "1坪幾噸冷氣", "冷氣容量"],
     publishedAt: "2026-08-01",
     readingMinutes: 6,
+    verification: {
+      levels: ["spec-verified", "field-tested"],
+      specSource: "各品牌原廠型錄 CSPF / 噸數規格",
+      lastVerified: "2026-08-01",
+      note: "坪數估算法為台灣安裝實務常用公式，非業配文案。",
+    },
     content: [
       "買冷氣最常問的就是「這個房間要幾噸？」台灣一般估算方式是：每坪約需 600 BTU，換算下來 1 坪約 0.05 噸（即 500 BTU/坪的簡化算法，實務常以 1 坪 = 0.05～0.06 噸估算）。",
       "例如 4 坪臥室，基礎需求約 2.0～2.4 噸（2 噸機種最常見）。若為頂樓、西曬嚴重或窗戶大，建議加 10%～20%。",
@@ -47,6 +55,31 @@ export const articles: Article[] = [
     ],
   },
   {
+    slug: "ac-install-pitfalls",
+    title: "冷氣安裝 7 大避坑：排水、管線、保固必查項目",
+    description:
+      "第一線安裝實務整理。室外機位置、排水路徑、施工保固、紙本單據核對——業配文不會告訴你的現場細節。",
+    category: "air-conditioner",
+    keywords: ["冷氣安裝", "冷氣避坑", "冷氣施工", "冷氣排水"],
+    publishedAt: "2026-08-17",
+    readingMinutes: 8,
+    verification: {
+      levels: ["field-tested", "myth-busted"],
+      lastVerified: "2026-08-17",
+      note: "內容來自門市現場客訴與施工經驗，非網路拼凑。",
+    },
+    content: [
+      "冷氣安裝最常出問題的不是機器本身，而是施工細節。以下 7 項是現場第一線最常遇到的坑，購買前和安裝當天都該確認。",
+      "① 室外機散熱空間：左右各留 30 公分以上，前方不可遮擋。散熱不良會導致效率下降、壓縮機過早故障，且不在原廠保固範圍。",
+      "② 排水路徑：冷凝水必須有明確排水方向，不可隨意滴在牆面或鄰居陽台。這是客訴第一名，安裝前就要確認走管方式。",
+      "③ 管線長度：超過原廠規範的配管長度需補充冷媒，費用另計。簽約前確認室內外機距離，避免現場加價爭議。",
+      "④ 保固範圍釐清：原廠保固（壓縮機、零件）和安裝商保固（施工品質）是兩回事，紙本單據上都要載明。",
+      "⑤ 試機時間：安裝完成後至少試機 30 分鐘，確認冷房效果、遙控器功能、定時設定，不要師傅一走就簽名。",
+      "⑥ 型號序號核對：室內外機型號必須與合約一致，保固卡上的序號拍照留存。",
+      "⑦ 使用本站「冷氣安裝避坑檢核表」逐項勾選，複雜現場條件建議加 LINE 一對一評估。",
+    ],
+  },
+  {
     slug: "inverter-vs-fixed-ac",
     title: "變頻冷氣 vs 定頻冷氣：省電差多少？怎麼選？",
     description:
@@ -55,6 +88,12 @@ export const articles: Article[] = [
     keywords: ["變頻冷氣", "定頻冷氣", "CSPF", "冷氣省電"],
     publishedAt: "2026-08-05",
     readingMinutes: 7,
+    verification: {
+      levels: ["spec-verified", "myth-busted"],
+      specSource: "經濟部能效標章 CSPF 數據",
+      lastVerified: "2026-08-05",
+      note: "破解「變頻一定省電」迷思，依使用時數判斷。",
+    },
     content: [
       "變頻冷氣能依室溫調整壓縮機轉速，長時間運轉時通常比定頻更省電；定頻則是全開或全關，適合短時間使用、預算有限的情境。",
       "台灣能效標章以 CSPF（Cooling Seasonal Performance Factor）衡量，數值越高代表整季冷房效率越好。選購時優先挑 CSPF 4 以上機種。",
