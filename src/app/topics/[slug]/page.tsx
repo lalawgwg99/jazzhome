@@ -96,9 +96,6 @@ export default async function TopicPage({ params }: TopicPageProps) {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-black/[0.06]">
-            <span className="font-mono text-xs text-[#71717A] self-center mr-1">
-              決策焦點：
-            </span>
             {category.highlights.map((h) => (
               <span
                 key={h}
@@ -116,19 +113,16 @@ export default async function TopicPage({ params }: TopicPageProps) {
         <section>
           <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-6">
             <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#71717A]">
+              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#A67C52]">
                 INTERACTIVE CALCULATOR
               </p>
-              <h2 className="mt-1 text-xl font-extrabold tracking-tight text-[#18181B] sm:text-2xl">
-                {category.slug === "air-conditioner" && "冷氣坪數與噸數即時試算"}
-                {category.slug === "refrigerator" && "冰箱容量與公升數即時試算"}
+              <h2 className="mt-1 text-xl font-extrabold tracking-tight text-[#111111] sm:text-2xl">
+                {category.slug === "air-conditioner" && "冷氣坪數與噸數試算"}
+                {category.slug === "refrigerator" && "冰箱容量與公升數試算"}
                 {category.slug === "washing-machine" && "洗衣機公斤數與洗脫烘決策"}
                 {category.slug === "tv" && "電視觀賞距離與黃金吋數試算"}
               </h2>
             </div>
-            <span className="font-mono text-xs text-[#71717A]">
-              免跳頁 · 即時在線運算
-            </span>
           </div>
 
           {category.slug === "air-conditioner" && <AcCalculator />}

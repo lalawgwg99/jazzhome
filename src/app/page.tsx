@@ -61,7 +61,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-xs sm:text-sm leading-relaxed text-[#555555]">
-                免登入，算式在瀏覽器即時運算。匯整 2026 經濟部汰舊換新補助 NT$ 3,000 + 貨物稅退稅最高 NT$ 2,000 元，以及台灣第一線標準安裝加價收費透明行情。
+                整合 2026 經濟部汰舊換新補助 NT$ 3,000 + 貨物稅退稅最高 NT$ 2,000 元，以及台灣第一線標準安裝加價收費透明行情。
               </p>
 
               {/* Quick Jump Links */}

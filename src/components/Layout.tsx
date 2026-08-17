@@ -139,7 +139,7 @@ export function Footer() {
               JAZZHOME 台灣家電生活決策手帳
             </p>
             <p className="mt-0.5 text-[11px] text-[#777777]">
-              © {new Date().getFullYear()} JazzHome. 免登入，算式主要於本機瀏覽器即時運算。
+              © {new Date().getFullYear()} JazzHome. 台灣家電選購與施工避坑決策手帳。
             </p>
           </div>
         </div>
