@@ -94,7 +94,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <div className="flex flex-wrap items-center gap-2 text-xs text-[#8E8E93]">
             <span className="flex items-center gap-1 font-semibold text-[#0071E3] bg-[#0071E3]/10 px-2.5 py-0.5 rounded-full">
               <span>{category.icon}</span>
-              <span>{category.name}</span>
+              <span>{category.name}專題</span>
             </span>
             <span>·</span>
             <time dateTime={article.publishedAt}>{article.publishedAt}</time>
@@ -105,7 +105,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             <span>{article.readingMinutes} 分鐘閱讀</span>
           </div>
 
-          <h1 className="mt-4 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-4xl sm:leading-[1.2]">
+          <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-[#1C1C1E] sm:text-4xl sm:leading-[1.2]">
             {article.title}
           </h1>
 
@@ -120,15 +120,55 @@ export default async function BlogPage({ params }: BlogPageProps) {
           )}
         </header>
 
-        {/* Article Content */}
-        <div className="mt-8 space-y-10">
+        {/* 30-Second Key Takeaways Card (Wirecutter / Apple Editorial Style) */}
+        {article.takeaways && article.takeaways.length > 0 && (
+          <div className="apple-card my-8 border border-[#0071E3]/20 bg-gradient-to-br from-white to-[#0071E3]/[0.03] p-6 sm:p-7">
+            <div className="flex items-center gap-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#0071E3] text-xs text-white font-bold">
+                ⚡
+              </span>
+              <h2 className="text-sm font-bold text-[#1C1C1E] uppercase tracking-wide">
+                30 秒重點結論速讀
+              </h2>
+            </div>
+            <ul className="mt-3.5 space-y-2 text-xs sm:text-sm text-[#3A3A3C]">
+              {article.takeaways.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="text-[#0071E3] font-bold">✓</span>
+                  <span className="leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Table of Contents Quick Nav */}
+        <div className="my-6 rounded-2xl bg-[#F2F2F7]/80 p-4.5 border border-black/[0.04]">
+          <p className="text-xs font-bold text-[#8E8E93] uppercase tracking-wider">
+            章節目錄導讀
+          </p>
+          <div className="mt-2.5 flex flex-wrap gap-2">
+            {article.sections.map((section, idx) => (
+              <a
+                key={idx}
+                href={`#section-${idx}`}
+                className="apple-btn-active rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-[#1C1C1E] shadow-sm hover:text-[#0071E3] border border-black/[0.04]"
+              >
+                {section.heading.split("、")[1] || section.heading}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Article Sections */}
+        <div className="mt-10 space-y-12">
           {article.sections.map((section, idx) => (
-            <section key={idx} className="space-y-4">
+            <section key={idx} id={`section-${idx}`} className="space-y-4 scroll-mt-20">
               <h2 className="text-xl font-bold tracking-tight text-[#1C1C1E] sm:text-2xl">
                 {section.heading}
               </h2>
 
-              <div className="space-y-3">
+              <div className="space-y-3.5">
                 {section.body.map((p, pIdx) => (
                   <p
                     key={pIdx}
@@ -139,7 +179,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 ))}
               </div>
 
-              {/* Table rendering if exists */}
+              {/* Table rendering */}
               {section.table && (
                 <div className="my-6 overflow-hidden rounded-2xl border border-black/[0.06] bg-white shadow-sm">
                   <div className="overflow-x-auto">
@@ -169,7 +209,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 </div>
               )}
 
-              {/* Callout Box rendering if exists */}
+              {/* Callout Box rendering */}
               {section.callout && (
                 <div
                   className={`rounded-2xl p-5 border text-sm leading-relaxed ${
@@ -235,7 +275,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <div className="mt-12">
           <LineCta
             variant="banner"
-            title="看完文章仍對自家空間規格不確定？"
+            title="看完專欄仍對自家空間條件不確定？"
             description="冷氣噸數、冰箱門寬、陽台排水或電視距離，拍照傳到 LINE，由第一線技師為您免費提供專業評估。"
           />
         </div>
