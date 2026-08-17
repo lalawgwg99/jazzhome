@@ -8,6 +8,12 @@ import { AcCalculator } from "@/components/tools/AcCalculator";
 import { RefrigeratorCalculator } from "@/components/tools/RefrigeratorCalculator";
 import { WashingMachineCalculator } from "@/components/tools/WashingMachineCalculator";
 import { TvDistanceCalculator } from "@/components/tools/TvDistanceCalculator";
+import {
+  AcIcon,
+  RefrigeratorIcon,
+  WasherIcon,
+  TvIcon,
+} from "@/components/Icons";
 import { getCategoryBySlug, categories } from "@/lib/categories";
 import { getArticlesByCategory } from "@/lib/articles";
 import { getToolsByCategory } from "@/lib/tools";
@@ -42,6 +48,15 @@ export default async function TopicPage({ params }: TopicPageProps) {
   const categoryArticles = getArticlesByCategory(category.slug);
   const categoryTools = getToolsByCategory(category.slug);
 
+  const CategoryIconComp =
+    category.slug === "air-conditioner"
+      ? AcIcon
+      : category.slug === "refrigerator"
+      ? RefrigeratorIcon
+      : category.slug === "washing-machine"
+      ? WasherIcon
+      : TvIcon;
+
   const breadcrumb = buildBreadcrumbJsonLd([
     { name: "首頁", path: "/" },
     { name: `${category.name}專題`, path: `/topics/${slug}` },
@@ -51,25 +66,27 @@ export default async function TopicPage({ params }: TopicPageProps) {
     <>
       <JsonLd data={breadcrumb} />
 
-      {/* Header Banner - TaiCalc Warm Editorial Style */}
-      <section className="border-b border-black/[0.08] bg-[#F9F9F8] py-10 sm:py-14">
+      {/* Header Banner - Luxury Department Store Style */}
+      <section className="border-b border-black/[0.08] bg-[#FAF9F8] py-10 sm:py-14">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <nav className="flex items-center gap-1.5 font-mono text-xs text-[#71717A]">
-            <Link href="/" className="hover:text-[#18181B] transition-colors">
+          <nav className="flex items-center gap-1.5 font-mono text-xs text-[#777777]">
+            <Link href="/" className="hover:text-[#111111] transition-colors">
               首頁
             </Link>
             <span>/</span>
-            <span className="text-[#18181B] font-semibold">{category.name}專題手帳</span>
+            <span className="text-[#111111] font-semibold">{category.name}選品手帳</span>
           </nav>
 
-          <div className="mt-4 flex items-baseline gap-3">
-            <span className="text-3xl">{category.icon}</span>
+          <div className="mt-4 flex items-center gap-3.5">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-[#A67C52]/30 shadow-2xs">
+              <CategoryIconComp size={28} className="text-[#A67C52]" />
+            </div>
             <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#71717A]">
-                TOPIC TOOLKIT · 2026
+              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#A67C52]">
+                CURATED GALLERY · 2026
               </p>
-              <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-[#18181B] sm:text-4xl">
-                {category.name}選購、規格與施工避坑決策
+              <h1 className="mt-0.5 text-2xl font-extrabold tracking-tight text-[#111111] sm:text-4xl">
+                {category.name}選購、規格與施工避坑手帳
               </h1>
             </div>
           </div>

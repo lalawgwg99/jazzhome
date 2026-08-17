@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { lineUrl } from "@/lib/monetization";
+import { BrandLogo } from "@/components/Icons";
 
 const DEPARTMENTS = [
   { href: "/topics/air-conditioner", floor: "1F", label: "空調旗艦館" },
@@ -17,18 +18,21 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/[0.08] bg-[#FAF9F8]/95 backdrop-blur-md">
-      <div className="mx-auto flex h-15 max-w-5xl items-center justify-between px-4 sm:px-6">
-        {/* Brand - SKM Luxury Typography */}
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6">
+        {/* Brand - Luxury Monogram & Typography */}
         <Link
           href="/"
-          className="flex items-baseline gap-2.5 group transition-opacity hover:opacity-85"
+          className="flex items-center gap-3 group transition-opacity hover:opacity-85"
         >
-          <span className="font-extrabold text-base sm:text-lg tracking-[0.12em] text-[#111111] uppercase font-sans">
-            JazzHome
-          </span>
-          <span className="text-[11px] font-medium tracking-wider text-[#A67C52] border-l border-black/[0.12] pl-2 hidden sm:inline">
-            精品家電選品手帳
-          </span>
+          <BrandLogo size={32} className="shadow-2xs rounded-lg transition-transform group-hover:scale-105" />
+          <div className="flex flex-col">
+            <span className="font-extrabold text-base tracking-[0.14em] text-[#111111] uppercase font-sans leading-none">
+              JAZZHOME
+            </span>
+            <span className="text-[10px] font-medium tracking-wider text-[#A67C52] uppercase mt-0.5">
+              Luxury Appliance Curation
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Department Nav */}
@@ -131,13 +135,16 @@ export function Footer() {
 
       {/* Copyright & Links */}
       <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <p className="font-extrabold text-[#111111] text-sm tracking-wider uppercase font-sans">
-            JAZZHOME 精品家電選品手帳
-          </p>
-          <p className="mt-1 text-[11px] text-[#777777]">
-            © {new Date().getFullYear()} JazzHome. 免登入，算式主要於本機瀏覽器即時運算。
-          </p>
+        <div className="flex items-center gap-3">
+          <BrandLogo size={28} />
+          <div>
+            <p className="font-extrabold text-[#111111] text-sm tracking-wider uppercase font-sans">
+              JAZZHOME 精品家電選品手帳
+            </p>
+            <p className="mt-0.5 text-[11px] text-[#777777]">
+              © {new Date().getFullYear()} JazzHome. 免登入，算式主要於本機瀏覽器即時運算。
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-wrap gap-4 text-xs">

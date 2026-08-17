@@ -4,6 +4,14 @@ import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { MonetizationFunnel } from "@/components/MonetizationFunnel";
 import { HeroMiniCalculator } from "@/components/tools/HeroMiniCalculator";
+import {
+  AcIcon,
+  RefrigeratorIcon,
+  WasherIcon,
+  TvIcon,
+  ChecklistIcon,
+  BoutiqueIcon,
+} from "@/components/Icons";
 import { categories } from "@/lib/categories";
 import { getLatestArticles } from "@/lib/articles";
 import { faqs } from "@/lib/faq";
@@ -102,6 +110,7 @@ export default function HomePage() {
             {[
               {
                 floor: "1F",
+                icon: <AcIcon size={20} className="text-[#A67C52]" />,
                 title: "冷氣坪數與噸數試算",
                 problem: "客廳 9 坪有西曬，到底要買 5.0kW 還是 6.3kW？",
                 tag: "長寬公尺換算 · 2026補助試算",
@@ -109,6 +118,7 @@ export default function HomePage() {
               },
               {
                 floor: "1F",
+                icon: <ChecklistIcon size={20} className="text-[#A67C52]" />,
                 title: "冷氣安裝現場加價檢核",
                 problem: "師傅到場說銅管超長、要洗洞，收費多少才合理？",
                 tag: "銅管/洗洞/鐵架加價行情",
@@ -116,6 +126,7 @@ export default function HomePage() {
               },
               {
                 floor: "1F",
+                icon: <BoutiqueIcon size={20} className="text-[#A67C52]" />,
                 title: "10 大冷氣品牌旗艦庫",
                 problem: "大金、國際、日立、三菱、禾聯，哪台符合預算？",
                 tag: "分離式 vs 窗型 · 2026最新世代",
@@ -123,6 +134,7 @@ export default function HomePage() {
               },
               {
                 floor: "2F",
+                icon: <RefrigeratorIcon size={20} className="text-[#A67C52]" />,
                 title: "冰箱容量與好市多囤貨",
                 problem: "好市多大採購肉品冷凍放不下？廚房門會卡住嗎？",
                 tag: "大冷凍公升數 · 搬運動線檢核",
@@ -130,6 +142,7 @@ export default function HomePage() {
               },
               {
                 floor: "3F",
+                icon: <WasherIcon size={20} className="text-[#A67C52]" />,
                 title: "洗衣機公斤數與洗脫烘",
                 problem: "洗床單被套要買幾公斤？買洗脫烘還是熱泵乾衣？",
                 tag: "洗量評估 · 陽台通風決策",
@@ -137,6 +150,7 @@ export default function HomePage() {
               },
               {
                 floor: "4F",
+                icon: <TvIcon size={20} className="text-[#A67C52]" />,
                 title: "電視觀看距離與尺寸",
                 problem: "沙發到電視牆 2.8 公尺，買 65 吋還是 75 吋？",
                 tag: "4K UHD 最佳視角換算",
@@ -150,15 +164,18 @@ export default function HomePage() {
               >
                 <div>
                   <div className="flex items-center justify-between text-xs font-mono text-[#777777]">
-                    <span className="rounded bg-[#FAF9F8] px-1.5 py-0.5 font-bold text-[#A67C52] border border-[#A67C52]/20">
-                      {item.floor}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="rounded bg-[#FAF9F8] px-1.5 py-0.5 font-bold text-[#A67C52] border border-[#A67C52]/20">
+                        {item.floor}
+                      </span>
+                      <span>{item.icon}</span>
+                    </div>
                     <span className="font-bold text-[#111111] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                       ↗
                     </span>
                   </div>
 
-                  <h3 className="mt-2.5 text-sm font-bold text-[#111111] group-hover:text-[#A67C52] transition-colors tracking-wide">
+                  <h3 className="mt-3 text-sm font-bold text-[#111111] group-hover:text-[#A67C52] transition-colors tracking-wide">
                     {item.title}
                   </h3>
 
@@ -251,46 +268,59 @@ export default function HomePage() {
           </div>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {categories.map((cat, idx) => (
-              <Link
-                key={cat.slug}
-                href={`/topics/${cat.slug}`}
-                className="skm-card group p-6 bg-white flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between text-xs font-mono text-[#777777]">
-                    <span className="rounded bg-[#FAF9F8] px-2 py-0.5 font-bold text-[#A67C52] border border-[#A67C52]/20">
-                      0{idx + 1}F 館別
-                    </span>
-                    <span className="font-bold text-[#111111] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
-                      ↗
-                    </span>
+            {categories.map((cat, idx) => {
+              const IconComp =
+                cat.slug === "air-conditioner"
+                  ? AcIcon
+                  : cat.slug === "refrigerator"
+                  ? RefrigeratorIcon
+                  : cat.slug === "washing-machine"
+                  ? WasherIcon
+                  : TvIcon;
+
+              return (
+                <Link
+                  key={cat.slug}
+                  href={`/topics/${cat.slug}`}
+                  className="skm-card group p-6 bg-white flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between text-xs font-mono text-[#777777]">
+                      <span className="rounded bg-[#FAF9F8] px-2 py-0.5 font-bold text-[#A67C52] border border-[#A67C52]/20">
+                        0{idx + 1}F 館別
+                      </span>
+                      <span className="font-bold text-[#111111] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                        ↗
+                      </span>
+                    </div>
+
+                    <div className="mt-3.5 flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#FAF9F8] border border-black/[0.06] shadow-2xs group-hover:border-[#A67C52]/40 transition-colors">
+                        <IconComp size={22} className="text-[#A67C52]" />
+                      </div>
+                      <h3 className="text-base font-bold text-[#111111] group-hover:text-[#A67C52] transition-colors tracking-wide">
+                        {cat.name}選品館
+                      </h3>
+                    </div>
+
+                    <p className="mt-2.5 text-xs leading-relaxed text-[#555555]">
+                      {cat.description}
+                    </p>
                   </div>
 
-                  <div className="mt-3 flex items-center gap-2.5">
-                    <span className="text-2xl">{cat.icon}</span>
-                    <h3 className="text-base font-bold text-[#111111] group-hover:text-[#A67C52] transition-colors tracking-wide">
-                      {cat.name}選品館
-                    </h3>
+                  <div className="mt-4 flex flex-wrap gap-1.5 pt-3 border-t border-black/[0.05] font-mono text-[11px]">
+                    {cat.highlights.map((h) => (
+                      <span
+                        key={h}
+                        className="rounded bg-[#FAF9F8] px-2 py-0.5 text-[#555555] border border-black/[0.04]"
+                      >
+                        {h}
+                      </span>
+                    ))}
                   </div>
-
-                  <p className="mt-2 text-xs leading-relaxed text-[#555555]">
-                    {cat.description}
-                  </p>
-                </div>
-
-                <div className="mt-4 flex flex-wrap gap-1.5 pt-3 border-t border-black/[0.05] font-mono text-[11px]">
-                  {cat.highlights.map((h) => (
-                    <span
-                      key={h}
-                      className="rounded bg-[#FAF9F8] px-2 py-0.5 text-[#555555] border border-black/[0.04]"
-                    >
-                      {h}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
