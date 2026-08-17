@@ -1,5 +1,6 @@
 import { Noto_Sans_TC } from "next/font/google";
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { Footer, Header } from "@/components/Layout";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="zh-Hant-TW" className={`${notoSansTC.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-zinc-50 font-sans text-zinc-900 antialiased">
+        <GoogleAnalytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
