@@ -124,13 +124,16 @@ export function AcBrandSelector() {
                   className="flex w-full items-start justify-between p-5 text-left transition-colors hover:bg-[#F9F9FB]"
                 >
                   <div className="space-y-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <span
                         className={`rounded-md px-2 py-0.5 text-xs font-bold ${brand.tierColor.bg} ${brand.tierColor.text} border ${brand.tierColor.border}`}
                       >
                         {brand.tierLabel}
                       </span>
-                      <span className="text-xs font-medium text-[#8E8E93]">
+                      <span className="rounded bg-black/[0.04] px-1.5 py-0.5 text-[11px] font-semibold text-[#1C1C1E]">
+                        {brand.currentGenTag}
+                      </span>
+                      <span className="text-[11px] font-medium text-[#8E8E93]">
                         {brand.origin}
                       </span>
                     </div>
