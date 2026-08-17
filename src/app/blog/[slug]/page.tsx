@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { LineCta } from "@/components/LineCta";
+import { ProductRecommendations } from "@/components/ProductRecommendations";
 import {
   articles,
   getArticleBySlug,
@@ -96,6 +98,15 @@ export default async function BlogPage({ params }: BlogPageProps) {
               {paragraph}
             </p>
           ))}
+        </div>
+
+        {article.affiliateProducts &&
+          article.affiliateProducts.some((p) => p.url) && (
+            <ProductRecommendations products={article.affiliateProducts} />
+          )}
+
+        <div className="mt-10">
+          <LineCta variant="banner" />
         </div>
 
         <footer className="mt-12 rounded-lg bg-amber-50 p-5 text-sm text-amber-900">

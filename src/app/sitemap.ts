@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: base, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/`, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
     { url: `${base}/tools`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
   ];
 

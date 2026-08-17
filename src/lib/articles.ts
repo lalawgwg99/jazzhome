@@ -1,4 +1,5 @@
 import type { CategorySlug } from "./categories";
+import type { AffiliateProduct } from "./monetization";
 
 export interface Article {
   slug: string;
@@ -10,6 +11,7 @@ export interface Article {
   updatedAt?: string;
   readingMinutes: number;
   content: string[];
+  affiliateProducts?: AffiliateProduct[];
 }
 
 export const articles: Article[] = [
@@ -27,6 +29,21 @@ export const articles: Article[] = [
       "例如 4 坪臥室，基礎需求約 2.0～2.4 噸（2 噸機種最常見）。若為頂樓、西曬嚴重或窗戶大，建議加 10%～20%。",
       "除了噸數，變頻與定頻、能效標章（CSPF 越高越省電）、室內機噪音與室外機位置也要一併考量。",
       "建議使用本站「冷氣坪數計算器」快速估算，再對照各品牌 2 噸、2.5 噸、3 噸機種規格做最終決定。",
+    ],
+    affiliateProducts: [
+      {
+        name: "日立 2 噸變頻冷氣（示例）",
+        platform: "momo",
+        url: process.env.NEXT_PUBLIC_AFFILIATE_MOMO ?? "",
+        price: "依平台活動價為準",
+        note: "2 噸 · 適合 3～4 坪",
+      },
+      {
+        name: "國際 2 噸變頻冷氣（示例）",
+        platform: "pchome",
+        url: process.env.NEXT_PUBLIC_AFFILIATE_PCHOME ?? "",
+        note: "CSPF 4 以上機種",
+      },
     ],
   },
   {

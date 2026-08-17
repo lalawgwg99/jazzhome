@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { categories } from "@/lib/categories";
 import { tools } from "@/lib/tools";
+import { LineCta } from "@/components/LineCta";
 
 export function Header() {
   return (
@@ -25,11 +26,10 @@ export function Header() {
           >
             工具
           </Link>
+          <LineCta variant="compact" />
         </nav>
         <nav className="flex items-center gap-3 text-sm md:hidden">
-          <Link href="/tools" className="text-zinc-600">
-            工具
-          </Link>
+          <LineCta variant="compact" />
         </nav>
       </div>
       <div className="mx-auto flex max-w-5xl gap-2 overflow-x-auto px-4 pb-3 md:hidden">

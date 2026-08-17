@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArticleCard } from "@/components/ArticleCard";
 import { CategoryCard } from "@/components/CategoryCard";
+import { LineCta } from "@/components/LineCta";
+import { MonetizationFunnel } from "@/components/MonetizationFunnel";
 import { categories } from "@/lib/categories";
 import { getLatestArticles } from "@/lib/articles";
 import { tools } from "@/lib/tools";
@@ -43,6 +45,7 @@ export default function HomePage() {
                 {tool.icon} {tool.name}
               </Link>
             ))}
+            <LineCta variant="compact" />
           </div>
         </div>
       </section>
@@ -58,6 +61,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <MonetizationFunnel />
 
       <section className="bg-zinc-50 px-4 py-14">
         <div className="mx-auto max-w-5xl">
