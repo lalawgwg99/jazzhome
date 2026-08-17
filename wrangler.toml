@@ -1,0 +1,5 @@
+# Cloudflare Pages 設定
+# 本專案使用 Next.js 靜態匯出，直接部署 out/ 目錄
+name = "jazzhome"
+compatibility_date = "2024-08-01"
+pages_build_output_dir = "out"
