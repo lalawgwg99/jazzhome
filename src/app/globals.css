@@ -1,34 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F9F9F8;
+  /* Option A: Japanese Architectural Editorial Palette */
+  --background: #F6F6F3;
   --card-bg: #FFFFFF;
-  --foreground: #18181B;
-  --secondary-label: #52525B;
-  --tertiary-label: #71717A;
-  --border-subtle: rgba(24, 24, 27, 0.08);
-  --border-strong: rgba(24, 24, 27, 0.14);
-  
-  /* TaiCalc / Monocle Inspired Palette */
-  --accent-blue: #1D4ED8;
-  --accent-forest: #0F5B47;
+  --foreground: #1C1917;
+  --secondary-label: #57534E;
+  --tertiary-label: #A8A29E;
+  --border-color: rgba(28, 25, 23, 0.08);
+  --border-strong: rgba(28, 25, 23, 0.16);
+
+  --accent-ink: #1C1917;
+  --accent-blue: #1E40AF;
+  --accent-emerald: #047857;
   --accent-amber: #B45309;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang TC", "Helvetica Neue", "Segoe UI", sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang TC", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Helvetica Neue", sans-serif;
   --font-mono: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang TC", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang TC", "Hiragino Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.012em;
 }
 
 /* Custom Minimal Scrollbar */
@@ -40,37 +41,37 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(28, 25, 23, 0.12);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.22);
+  background: rgba(28, 25, 23, 0.25);
 }
 
-/* Minimal TaiCalc Style Cards */
-.taicalc-card {
+/* Option A: Crafted Architectural Cards */
+.craft-card {
   background-color: #FFFFFF;
-  border-radius: 1rem;
-  border: 1px solid rgba(24, 24, 27, 0.08);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  border-radius: 0.875rem;
+  border: 1px solid rgba(28, 25, 23, 0.08);
+  box-shadow: 0 1px 2px rgba(28, 25, 23, 0.02);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.taicalc-card:hover {
-  border-color: rgba(24, 24, 27, 0.18);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+.craft-card:hover {
+  border-color: rgba(28, 25, 23, 0.2);
+  box-shadow: 0 4px 14px rgba(28, 25, 23, 0.05);
 }
 
-/* Interactive Element Press Feedback */
-.apple-btn-active {
+/* Button Press Feedback */
+.craft-btn {
   transition: transform 0.12s ease, background-color 0.12s ease, opacity 0.12s ease, border-color 0.12s ease;
 }
-.apple-btn-active:active {
+.craft-btn:active {
   transform: scale(0.98);
 }
 
-/* Range Slider */
+/* Clean Input & Range Sliders */
 input[type="range"] {
-  accent-color: #18181B;
+  accent-color: #1C1917;
   cursor: pointer;
 }
