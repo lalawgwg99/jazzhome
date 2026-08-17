@@ -5,12 +5,12 @@ import { useState } from "react";
 import { lineUrl } from "@/lib/monetization";
 import { BrandLogo } from "@/components/Icons";
 
-const DEPARTMENTS = [
-  { href: "/topics/air-conditioner", floor: "1F", label: "空調旗艦館" },
-  { href: "/topics/refrigerator", floor: "2F", label: "頂級冰箱館" },
-  { href: "/topics/washing-machine", floor: "3F", label: "智能洗衣館" },
-  { href: "/topics/tv", floor: "4F", label: "劇院影音館" },
-  { href: "/tools", floor: "VIP", label: "選品計算器" },
+const NAV_ITEMS = [
+  { href: "/topics/air-conditioner", label: "冷氣空調" },
+  { href: "/topics/refrigerator", label: "電冰箱" },
+  { href: "/topics/washing-machine", label: "洗衣機" },
+  { href: "/topics/tv", label: "智慧電視" },
+  { href: "/tools", label: "選購計算器" },
 ];
 
 export function Header() {
@@ -30,23 +30,20 @@ export function Header() {
               JAZZHOME
             </span>
             <span className="text-[10px] font-medium tracking-wider text-[#A67C52] uppercase mt-0.5">
-              Luxury Appliance Curation
+              台灣家電生活決策手帳
             </span>
           </div>
         </Link>
 
-        {/* Desktop Department Nav */}
+        {/* Desktop Category Navigation */}
         <nav className="hidden md:flex items-center gap-1">
-          {DEPARTMENTS.map((dept) => (
+          {NAV_ITEMS.map((item) => (
             <Link
-              key={dept.href}
-              href={dept.href}
-              className="skm-btn rounded-md px-3 py-1.5 text-xs font-medium text-[#444444] hover:bg-black/[0.04] hover:text-[#111111] transition-colors"
+              key={item.href}
+              href={item.href}
+              className="skm-btn rounded-md px-3.5 py-1.5 text-xs font-medium text-[#444444] hover:bg-black/[0.04] hover:text-[#111111] transition-colors"
             >
-              <span className="font-mono text-[10px] text-[#A67C52] mr-1">
-                {dept.floor}
-              </span>
-              <span>{dept.label}</span>
+              {item.label}
             </Link>
           ))}
         </nav>
@@ -59,7 +56,7 @@ export function Header() {
             rel="noopener noreferrer"
             className="skm-btn inline-flex items-center gap-1.5 rounded-full bg-[#111111] px-4 py-1.5 text-xs font-medium text-[#D4AF37] border border-[#A67C52]/40 shadow-xs hover:bg-black"
           >
-            <span>專屬管家 VIP 諮詢</span>
+            <span>LINE 免費審圖諮詢</span>
             <span className="font-mono text-xs text-[#D4AF37]">↗</span>
           </a>
 
@@ -78,15 +75,15 @@ export function Header() {
       {mobileOpen && (
         <div className="border-b border-black/[0.08] bg-[#FAF9F8] px-4 py-3 md:hidden">
           <div className="flex flex-col gap-1 text-sm">
-            {DEPARTMENTS.map((dept) => (
+            {NAV_ITEMS.map((item) => (
               <Link
-                key={dept.href}
-                href={dept.href}
+                key={item.href}
+                href={item.href}
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-between rounded-lg px-3 py-2 text-[#111111] hover:bg-black/[0.04]"
               >
-                <span>{dept.label}</span>
-                <span className="font-mono text-xs text-[#A67C52]">{dept.floor}</span>
+                <span>{item.label}</span>
+                <span className="text-xs text-[#A67C52]">›</span>
               </Link>
             ))}
           </div>
@@ -139,7 +136,7 @@ export function Footer() {
           <BrandLogo size={28} />
           <div>
             <p className="font-extrabold text-[#111111] text-sm tracking-wider uppercase font-sans">
-              JAZZHOME 精品家電選品手帳
+              JAZZHOME 台灣家電生活決策手帳
             </p>
             <p className="mt-0.5 text-[11px] text-[#777777]">
               © {new Date().getFullYear()} JazzHome. 免登入，算式主要於本機瀏覽器即時運算。
@@ -149,13 +146,16 @@ export function Footer() {
 
         <div className="flex flex-wrap gap-4 text-xs">
           <Link href="/tools" className="hover:text-[#111111] transition-colors">
-            選品計算器
+            選購計算器
           </Link>
           <Link href="/topics/air-conditioner" className="hover:text-[#111111] transition-colors">
-            空調旗艦館
+            冷氣空調
           </Link>
           <Link href="/topics/refrigerator" className="hover:text-[#111111] transition-colors">
-            頂級冰箱館
+            電冰箱
+          </Link>
+          <Link href="/topics/washing-machine" className="hover:text-[#111111] transition-colors">
+            洗衣機
           </Link>
           <a
             href={lineUrl}
@@ -163,7 +163,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="hover:text-[#111111] transition-colors font-medium text-[#A67C52]"
           >
-            專屬管家免費審圖 ↗
+            LINE 免費審圖諮詢 ↗
           </a>
         </div>
       </div>

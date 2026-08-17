@@ -41,11 +41,11 @@ export default function HomePage() {
     <>
       <JsonLd data={buildFaqJsonLd(faqs)} />
 
-      {/* Hero Section - SKM Luxury Department Store Style */}
+      {/* Hero Section */}
       <section className="border-b border-black/[0.08] bg-[#FAF9F8] py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-            {/* Left Column (Luxury Typography) */}
+            {/* Left Column */}
             <div className="lg:col-span-7 space-y-4">
               <div className="inline-flex items-center gap-2 font-mono text-[11px] text-[#8C6438] bg-[#F7F3EE] px-3 py-1 rounded-full border border-[#A67C52]/30 shadow-2xs">
                 <span>✦</span>
@@ -64,13 +64,13 @@ export default function HomePage() {
                 免登入，算式在瀏覽器即時運算。匯整 2026 經濟部汰舊換新補助 NT$ 3,000 + 貨物稅退稅最高 NT$ 2,000 元，以及台灣第一線標準安裝加價收費透明行情。
               </p>
 
-              {/* Quick Jump Boutiques */}
+              {/* Quick Jump Links */}
               <div className="flex flex-wrap gap-2 pt-2">
                 {[
-                  { name: "1F 空調噸數試算", link: "/tools/ac-calculator" },
+                  { name: "冷氣噸數試算", link: "/tools/ac-calculator" },
                   { name: "標準安裝加價表", link: "/tools/ac-install-checklist" },
-                  { name: "10大品牌旗艦庫", link: "/tools/ac-brand-matrix" },
-                  { name: "2F 好市多冰箱容量", link: "/tools/refrigerator-calculator" },
+                  { name: "10大冷氣品牌庫", link: "/tools/ac-brand-matrix" },
+                  { name: "好市多冰箱容量", link: "/tools/refrigerator-calculator" },
                 ].map((tag) => (
                   <Link
                     key={tag.name}
@@ -83,7 +83,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Column (Hero Boutique Calculator) */}
+            {/* Right Column */}
             <div className="lg:col-span-5">
               <HeroMiniCalculator />
             </div>
@@ -91,7 +91,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Boutique Decision Cards ("你現在卡在哪一題？") */}
+      {/* Decision Cards ("你現在卡在哪一題？") */}
       <section className="border-b border-black/[0.08] bg-white py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
@@ -102,14 +102,14 @@ export default function HomePage() {
               </h2>
             </div>
             <p className="text-xs font-mono text-[#777777]">
-              CURATED DECISION TOOLKIT · 依問題直接切入
+              DECISION TOOLKIT · 依核心痛點快速切入
             </p>
           </div>
 
           <div className="mt-6 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                floor: "1F",
+                category: "冷氣噸數",
                 icon: <AcIcon size={20} className="text-[#A67C52]" />,
                 title: "冷氣坪數與噸數試算",
                 problem: "客廳 9 坪有西曬，到底要買 5.0kW 還是 6.3kW？",
@@ -117,7 +117,7 @@ export default function HomePage() {
                 link: "/tools/ac-calculator",
               },
               {
-                floor: "1F",
+                category: "安裝避坑",
                 icon: <ChecklistIcon size={20} className="text-[#A67C52]" />,
                 title: "冷氣安裝現場加價檢核",
                 problem: "師傅到場說銅管超長、要洗洞，收費多少才合理？",
@@ -125,15 +125,15 @@ export default function HomePage() {
                 link: "/tools/ac-install-checklist",
               },
               {
-                floor: "1F",
+                category: "品牌選型",
                 icon: <BoutiqueIcon size={20} className="text-[#A67C52]" />,
-                title: "10 大冷氣品牌旗艦庫",
+                title: "10 大冷氣品牌選型庫",
                 problem: "大金、國際、日立、三菱、禾聯，哪台符合預算？",
                 tag: "分離式 vs 窗型 · 2026最新世代",
                 link: "/tools/ac-brand-matrix",
               },
               {
-                floor: "2F",
+                category: "冰箱容量",
                 icon: <RefrigeratorIcon size={20} className="text-[#A67C52]" />,
                 title: "冰箱容量與好市多囤貨",
                 problem: "好市多大採購肉品冷凍放不下？廚房門會卡住嗎？",
@@ -141,7 +141,7 @@ export default function HomePage() {
                 link: "/tools/refrigerator-calculator",
               },
               {
-                floor: "3F",
+                category: "洗衣洗量",
                 icon: <WasherIcon size={20} className="text-[#A67C52]" />,
                 title: "洗衣機公斤數與洗脫烘",
                 problem: "洗床單被套要買幾公斤？買洗脫烘還是熱泵乾衣？",
@@ -149,7 +149,7 @@ export default function HomePage() {
                 link: "/tools/washing-machine-calculator",
               },
               {
-                floor: "4F",
+                category: "電視視距",
                 icon: <TvIcon size={20} className="text-[#A67C52]" />,
                 title: "電視觀看距離與尺寸",
                 problem: "沙發到電視牆 2.8 公尺，買 65 吋還是 75 吋？",
@@ -165,8 +165,8 @@ export default function HomePage() {
                 <div>
                   <div className="flex items-center justify-between text-xs font-mono text-[#777777]">
                     <div className="flex items-center gap-2">
-                      <span className="rounded bg-[#FAF9F8] px-1.5 py-0.5 font-bold text-[#A67C52] border border-[#A67C52]/20">
-                        {item.floor}
+                      <span className="rounded bg-[#FAF9F8] px-2 py-0.5 font-bold text-[#A67C52] border border-[#A67C52]/20 font-sans">
+                        {item.category}
                       </span>
                       <span>{item.icon}</span>
                     </div>
@@ -193,7 +193,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2026 Taiwan 10-Brand Luxury Benchmark */}
+      {/* 2026 Taiwan 10-Brand Benchmark */}
       <section className="border-b border-black/[0.08] bg-[#FAF9F8] py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
@@ -201,7 +201,7 @@ export default function HomePage() {
               <div className="flex items-center gap-2">
                 <span className="text-[#A67C52] text-sm">✦</span>
                 <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#A67C52]">
-                  BOUTIQUE BENCHMARK · 2026
+                  BRAND BENCHMARK · 2026
                 </p>
               </div>
               <h2 className="mt-1 text-xl font-extrabold tracking-tight text-[#111111] sm:text-2xl">
@@ -212,7 +212,7 @@ export default function HomePage() {
               href="/tools/ac-brand-matrix"
               className="text-xs font-semibold text-[#111111] hover:text-[#A67C52] hover:underline"
             >
-              檢索 10 大品牌旗艦專櫃 ↗
+              開啟 10 大品牌規格庫 ↗
             </Link>
           </div>
 
@@ -221,7 +221,7 @@ export default function HomePage() {
               <table className="w-full text-left text-xs">
                 <thead className="border-b border-black/[0.08] bg-[#FAF9F8] font-mono text-[11px] text-[#777777]">
                   <tr>
-                    <th className="px-4 py-3.5">品牌專櫃</th>
+                    <th className="px-4 py-3.5">品牌</th>
                     <th className="px-4 py-3.5">2025/2026 現行主力旗艦</th>
                     <th className="px-4 py-3.5">型態支援</th>
                     <th className="px-4 py-3.5">核心技術特色</th>
@@ -255,20 +255,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Luxury Department Galleries */}
+      {/* Category Handbooks */}
       <section className="border-b border-black/[0.08] bg-white py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="flex items-baseline justify-between">
             <div className="flex items-center gap-2">
               <span className="text-[#A67C52] text-sm">✦</span>
               <h2 className="text-xl font-extrabold tracking-tight text-[#111111] sm:text-2xl">
-                四大精品家電選品手帳
+                四大品類家電選購研究
               </h2>
             </div>
           </div>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {categories.map((cat, idx) => {
+            {categories.map((cat) => {
               const IconComp =
                 cat.slug === "air-conditioner"
                   ? AcIcon
@@ -278,6 +278,15 @@ export default function HomePage() {
                   ? WasherIcon
                   : TvIcon;
 
+              const spaceTag =
+                cat.slug === "air-conditioner"
+                  ? "空間溫控"
+                  : cat.slug === "refrigerator"
+                  ? "食材保鮮"
+                  : cat.slug === "washing-machine"
+                  ? "衣物洗護"
+                  : "客廳影音";
+
               return (
                 <Link
                   key={cat.slug}
@@ -286,8 +295,8 @@ export default function HomePage() {
                 >
                   <div>
                     <div className="flex items-center justify-between text-xs font-mono text-[#777777]">
-                      <span className="rounded bg-[#FAF9F8] px-2 py-0.5 font-bold text-[#A67C52] border border-[#A67C52]/20">
-                        0{idx + 1}F 館別
+                      <span className="rounded bg-[#FAF9F8] px-2 py-0.5 font-bold text-[#A67C52] border border-[#A67C52]/20 font-sans">
+                        {spaceTag}
                       </span>
                       <span className="font-bold text-[#111111] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                         ↗
@@ -299,7 +308,7 @@ export default function HomePage() {
                         <IconComp size={22} className="text-[#A67C52]" />
                       </div>
                       <h3 className="text-base font-bold text-[#111111] group-hover:text-[#A67C52] transition-colors tracking-wide">
-                        {cat.name}選品館
+                        {cat.name}選購指南
                       </h3>
                     </div>
 
