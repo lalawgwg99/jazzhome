@@ -190,17 +190,17 @@ export default function HomePage() {
                 實務規格速查
               </p>
               <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-[#1C1C1E] sm:text-3xl">
-                2026 台灣冷氣五大品牌定位對照
+                2026 台灣冷氣十大品牌與選型對照
               </h2>
               <p className="mt-2 text-sm text-[#636366]">
-                依據原廠規格、壓縮機技術與台灣第一線安裝經驗整理
+                涵蓋大金、國際、日立、富士通、LG、禾聯、東元、聲寶、三菱重工、奇美等分離式與窗型規格
               </p>
             </div>
             <Link
-              href="/blog/ac-brand-comparison-taiwan"
+              href="/tools/ac-brand-matrix"
               className="text-xs font-semibold text-[#0071E3] hover:underline shrink-0"
             >
-              閱讀五大品牌完整深度評比 →
+              檢索 10 大品牌分離式/窗型規格庫 →
             </Link>
           </div>
 
