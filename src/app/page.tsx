@@ -18,8 +18,9 @@ export const metadata = buildMetadata({
   keywords: [
     "冷氣推薦",
     "冷氣坪數計算",
-    "冷氣安裝避坑",
+    "冷氣補助2026",
     "冰箱推薦",
+    "好市多冰箱",
     "洗衣機推薦",
     "電視觀看距離",
     "家電選購指南",
@@ -33,17 +34,17 @@ export default function HomePage() {
     <>
       <JsonLd data={buildFaqJsonLd(faqs)} />
 
-      {/* Hero Section - Apple Pure Elegance */}
-      <section className="relative overflow-hidden border-b border-black/[0.05] bg-white py-16 sm:py-24">
+      {/* Hero Section - Apple Ambient Glass Glow */}
+      <section className="relative overflow-hidden border-b border-black/[0.05] bg-white apple-glow-hero py-16 sm:py-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-black/[0.04] px-3.5 py-1 text-xs font-semibold text-[#1C1C1E] border border-black/[0.06]">
-              <span className="flex h-2 w-2 rounded-full bg-[#0071E3]" />
-              <span>原廠型錄核實 · 現場實務避坑</span>
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#0071E3]/[0.08] px-3.5 py-1 text-xs font-semibold text-[#0071E3] border border-[#0071E3]/20 shadow-xs">
+              <span className="flex h-2 w-2 rounded-full bg-[#0071E3] animate-pulse" />
+              <span>原廠型錄核實 · 2026 政府補助試算 · 現場實務避坑</span>
             </div>
 
             <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-[#1C1C1E] sm:text-5xl sm:leading-[1.15]">
-              把規格與施工講清楚，
+              把規格、補助與施工講清楚，
               <br className="hidden sm:inline" />
               再決定要不要買。
             </h1>
@@ -58,7 +59,7 @@ export default function HomePage() {
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
-                  className="apple-btn-active inline-flex items-center gap-2 rounded-full bg-[#F2F2F7] px-4 py-2 text-xs font-semibold text-[#1C1C1E] hover:bg-[#E5E5EA]"
+                  className="apple-btn-active inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#1C1C1E] shadow-sm border border-black/[0.06] hover:border-[#0071E3]/40 hover:text-[#0071E3]"
                 >
                   <span>{tool.icon}</span>
                   <span>{tool.name}</span>
@@ -69,23 +70,42 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 2026 Taiwan Subsidy Highlights Banner */}
+      <section className="border-b border-black/[0.04] bg-[#F9F9FB] py-4">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-[#248A3D] font-bold">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#34C759]/20 text-xs">
+              💰
+            </span>
+            <span>2026 台灣冷氣/冰箱節能補助進行中：汰舊換新 $3,000 + 貨物稅退稅最高 $2,000</span>
+          </div>
+          <Link
+            href="/blog/ac-2026-subsidies-and-tax-refund"
+            className="font-semibold text-[#0071E3] hover:underline shrink-0"
+          >
+            查看 5,000 元補助申請教學 →
+          </Link>
+        </div>
+      </section>
+
       {/* Interactive Tools Section */}
       <section className="py-14 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
-                即開即用
-              </p>
-              <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
-                互動選購評估工具
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-[#0071E3]/10 px-3 py-0.5 text-xs font-semibold text-[#0071E3]">
+                <span>⚡</span>
+                <span>即開即用 · 台灣算式</span>
+              </div>
+              <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-[#1C1C1E] sm:text-3xl">
+                智慧選購與施工評估工具
               </h2>
             </div>
             <Link
               href="/tools"
               className="text-xs font-semibold text-[#0071E3] hover:underline"
             >
-              查看全部工具 →
+              查看全部工具庫 →
             </Link>
           </div>
 
@@ -94,13 +114,13 @@ export default function HomePage() {
               <Link
                 key={tool.slug}
                 href={`/tools/${tool.slug}`}
-                className="apple-card apple-btn-active group flex flex-col justify-between p-6 border border-black/[0.05] bg-white hover:border-[#0071E3]/30"
+                className="apple-card apple-btn-active group flex flex-col justify-between p-6 bg-white hover:border-[#0071E3]/30"
               >
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="text-3xl">{tool.icon}</span>
                     {tool.badge && (
-                      <span className="rounded-full bg-[#0071E3]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[#0071E3]">
+                      <span className="rounded-full bg-[#0071E3]/10 px-2.5 py-0.5 text-[11px] font-bold text-[#0071E3]">
                         {tool.badge}
                       </span>
                     )}
@@ -115,7 +135,9 @@ export default function HomePage() {
 
                 <div className="mt-6 flex items-center justify-between border-t border-black/[0.04] pt-3 text-[11px]">
                   <span className="text-[#8E8E93]">{tool.summary}</span>
-                  <span className="font-semibold text-[#0071E3]">試算 ›</span>
+                  <span className="font-semibold text-[#0071E3] group-hover:translate-x-0.5 transition-transform">
+                    立即試算 ›
+                  </span>
                 </div>
               </Link>
             ))}
@@ -127,14 +149,15 @@ export default function HomePage() {
       <section className="py-14 sm:py-16 bg-white border-y border-black/[0.05]">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
-              權威指南
-            </p>
-            <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-[#5856D6]/10 px-3 py-0.5 text-xs font-semibold text-[#5856D6]">
+              <span>📚</span>
+              <span>權威指南</span>
+            </div>
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-[#1C1C1E] sm:text-3xl">
               四大品類選購研究
             </h2>
             <p className="mt-2 text-sm text-[#636366]">
-              型錄規格核實 · 第一線施工避坑 · 拒絕照抄業配文
+              型錄規格核實 · 台灣第一線施工避坑 · 拒絕照抄業配文
             </p>
           </div>
 
@@ -154,11 +177,12 @@ export default function HomePage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
-                精選文章
-              </p>
-              <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
-                最新家電研究指南
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-[#0071E3]/10 px-3 py-0.5 text-xs font-semibold text-[#0071E3]">
+                <span>📰</span>
+                <span>家電專欄</span>
+              </div>
+              <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-[#1C1C1E] sm:text-3xl">
+                最新家電研究與新品評析
               </h2>
             </div>
           </div>

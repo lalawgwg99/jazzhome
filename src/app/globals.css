@@ -1,16 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F2F2F7;
+  --background: #F4F5F7;
   --card-bg: #FFFFFF;
   --foreground: #1C1C1E;
-  --secondary-label: #8E8E93;
-  --tertiary-label: #C7C7CC;
-  --system-tint: #0071E3;
-  --system-tint-active: #005BB5;
-  --separator: rgba(60, 60, 67, 0.12);
-  --glass-bg: rgba(255, 255, 255, 0.82);
-  --glass-border: rgba(0, 0, 0, 0.06);
+  --secondary-label: #6E6E73;
+  --tertiary-label: #AEAEB2;
+  
+  /* Apple System Tint Palette */
+  --system-blue: #0071E3;
+  --system-blue-light: #EBF5FF;
+  
+  --tint-ac: #0071E3;
+  --tint-ac-bg: #EBF5FF;
+  --tint-ac-border: #BAE0FF;
+
+  --tint-fridge: #5856D6;
+  --tint-fridge-bg: #F0F0FE;
+  --tint-fridge-border: #D6D5FD;
+
+  --tint-washer: #00A3A6;
+  --tint-washer-bg: #E6F8F8;
+  --tint-washer-border: #A3EDED;
+
+  --tint-tv: #8644A2;
+  --tint-tv-bg: #F7EEFA;
+  --tint-tv-border: #E8CAEE;
+
+  --tint-emerald: #10B981;
+  --tint-emerald-bg: #ECFDF5;
+  --tint-amber: #F59E0B;
+  --tint-amber-bg: #FFFBEB;
+
+  --separator: rgba(60, 60, 67, 0.08);
 }
 
 @theme inline {
@@ -25,16 +47,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang TC", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
-/* Apple HIG Custom Form Controls & Feedback Utilities */
-input[type="range"] {
-  accent-color: #0071E3;
-  cursor: pointer;
-}
-
-/* Custom Scrollbar for subtle feel */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -47,31 +63,53 @@ input[type="range"] {
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.28);
 }
 
-/* Apple Card Inset Shadow */
+/* Apple Range Slider */
+input[type="range"] {
+  accent-color: #0071E3;
+  cursor: pointer;
+}
+
+/* Apple Elevated Card System */
 .apple-card {
   background-color: #FFFFFF;
   border-radius: 1.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 6px 16px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 16px 32px rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.09);
+}
+
+/* Apple Pro Dark Card (Wallet / Fitness Style) */
+.apple-dark-card {
+  background: linear-gradient(145deg, #1C1C1E 0%, #121214 100%);
+  color: #FFFFFF;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Apple Soft Ambient Glow */
+.apple-glow-hero {
+  background: radial-gradient(circle at 50% 0%, rgba(0, 113, 227, 0.09) 0%, rgba(88, 86, 214, 0.04) 40%, rgba(244, 245, 247, 0) 70%);
 }
 
 /* Apple Button & Interactive Element Press Feedback */
 .apple-btn-active {
-  transition: transform 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
 }
 .apple-btn-active:active {
   transform: scale(0.97);
 }
 
-/* Smooth Segmented Control Pill Transition */
-.segmented-pill {
-  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
-}
+/* Category Accent Border Glows */
+.cat-glow-ac:hover { border-color: rgba(0, 113, 227, 0.35); }
+.cat-glow-fridge:hover { border-color: rgba(88, 86, 214, 0.35); }
+.cat-glow-washer:hover { border-color: rgba(0, 163, 166, 0.35); }
+.cat-glow-tv:hover { border-color: rgba(134, 68, 162, 0.35); }
