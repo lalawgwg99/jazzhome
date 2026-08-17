@@ -35,15 +35,15 @@ export default function AcInstallChecklistPage() {
         </nav>
 
         <div className="mt-4 max-w-2xl">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#0071E3]/10 px-3 py-1 text-xs font-semibold text-[#0071E3]">
-            <span>🔧</span>
-            <span>第一線施工客訴實例整理 · 逐項查核</span>
+          <div className="inline-flex items-center gap-2 font-mono text-[11px] text-[#8C6438] bg-[#F7F3EE] px-3 py-1 rounded-full border border-[#A67C52]/30 shadow-2xs">
+            <span>✦</span>
+            <span className="font-semibold">INSTALLATION CHECKLIST · 2026</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
-            冷氣安裝 10 大施工避坑檢核表
+          <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-[#111111] sm:text-3xl">
+            冷氣安裝施工避坑與加價檢核表
           </h1>
-          <p className="mt-2 text-sm leading-relaxed text-[#636366]">
-            從室外機散熱、抽真空標準、排水防漏坡度到驗收試機。施工現場打開此頁面逐項核對，杜絕事後糾紛。
+          <p className="mt-2 text-sm leading-relaxed text-[#555555]">
+            冷氣「七分靠安裝」。涵蓋銅管超長、洗洞、室外機鐵架加價行情，以及現場施工 10 大爭議查核清單。
           </p>
         </div>
 

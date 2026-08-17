@@ -35,14 +35,14 @@ export default function AcCalculatorPage() {
         </nav>
 
         <div className="mt-4 max-w-2xl">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#0071E3]/10 px-3 py-1 text-xs font-semibold text-[#0071E3]">
-            <span>❄️</span>
-            <span>科學算式 · 原廠冷房能力 (kW) 對照</span>
+          <div className="inline-flex items-center gap-2 font-mono text-[11px] text-[#8C6438] bg-[#F7F3EE] px-3 py-1 rounded-full border border-[#A67C52]/30 shadow-2xs">
+            <span>✦</span>
+            <span className="font-semibold">PRECISION ESTIMATOR · 2026</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
+          <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-[#111111] sm:text-3xl">
             冷氣坪數與噸數計算器
           </h1>
-          <p className="mt-2 text-sm leading-relaxed text-[#636366]">
+          <p className="mt-2 text-sm leading-relaxed text-[#555555]">
             依台灣建築實務（1 坪 ≈ 0.58 kW 冷房能力）精確估算，並依頂樓、西曬、挑高開放格局自動加成安全餘裕。
           </p>
         </div>
