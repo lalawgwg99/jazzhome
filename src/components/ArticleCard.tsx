@@ -8,56 +8,39 @@ interface ArticleCardProps {
 
 export function ArticleCard({ article }: ArticleCardProps) {
   const category = getCategoryBySlug(article.category);
-  const theme = category?.theme;
 
   return (
-    <article className="apple-card group flex flex-col justify-between p-6 bg-white transition-all hover:border-[#0071E3]/30">
+    <article className="taicalc-card group flex flex-col justify-between p-5 bg-white transition-all">
       <div>
-        <div className="flex items-center justify-between text-xs text-[#8E8E93]">
-          <div className="flex items-center gap-1.5 font-medium">
-            <Link
-              href={`/topics/${article.category}`}
-              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                theme?.bgLight ?? "bg-black/[0.04]"
-              } ${theme?.badgeText ?? "text-[#1C1C1E]"} hover:opacity-80 transition-opacity`}
-            >
-              <span>{category?.icon}</span>
-              <span>{category?.name}</span>
-            </Link>
-          </div>
-          <div className="flex items-center gap-1.5 text-[#8E8E93]">
-            <time dateTime={article.publishedAt}>{article.publishedAt}</time>
-            <span>·</span>
-            <span>{article.readingMinutes} 分鐘</span>
-          </div>
+        <div className="flex items-center justify-between text-xs font-mono text-[#71717A]">
+          <span className="rounded bg-black/[0.04] px-2 py-0.5 text-[11px] font-sans font-medium text-[#18181B]">
+            {category?.name}
+          </span>
+          <span>{article.readingMinutes} min</span>
         </div>
 
-        <h3 className="mt-3.5 text-base sm:text-lg font-bold leading-snug tracking-tight text-[#1C1C1E] transition-colors group-hover:text-[#0071E3]">
+        <h3 className="mt-3 text-sm sm:text-base font-bold leading-snug tracking-tight text-[#18181B] group-hover:text-[#1D4ED8] transition-colors">
           <Link href={`/blog/${article.slug}`} className="focus:outline-none">
             {article.title}
           </Link>
         </h3>
 
-        <p className="mt-2 line-clamp-2 text-xs sm:text-sm leading-relaxed text-[#636366]">
+        <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-[#52525B]">
           {article.description}
         </p>
       </div>
 
-      <div className="mt-5 flex items-center justify-between pt-3.5 border-t border-black/[0.04]">
-        {article.verification ? (
-          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#248A3D] bg-[#34C759]/10 px-2.5 py-0.5 rounded-full border border-[#34C759]/20">
-            <span>✓</span> 型錄核實
-          </span>
-        ) : (
-          <span className="text-[11px] text-[#8E8E93]">選購分析</span>
-        )}
+      <div className="mt-4 flex items-center justify-between pt-3 border-t border-black/[0.05] text-[11px]">
+        <time dateTime={article.publishedAt} className="font-mono text-[#71717A]">
+          {article.publishedAt}
+        </time>
 
         <Link
           href={`/blog/${article.slug}`}
-          className="inline-flex items-center gap-1 text-xs font-semibold text-[#0071E3] hover:underline"
+          className="font-bold text-[#18181B] group-hover:text-[#1D4ED8] inline-flex items-center gap-0.5"
         >
-          <span>閱讀全文</span>
-          <span>→</span>
+          <span>閱讀</span>
+          <span>↗</span>
         </Link>
       </div>
     </article>
