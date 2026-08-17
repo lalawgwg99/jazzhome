@@ -2,17 +2,18 @@ import { faqs } from "@/lib/faq";
 
 export function FaqSection() {
   return (
-    <section className="py-14 sm:py-16" aria-labelledby="faq-heading">
+    <section className="py-14 sm:py-16 border-b border-black/[0.08] bg-white" aria-labelledby="faq-heading">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="text-center max-w-xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
-            答疑解惑
-          </p>
-          <h2 id="faq-heading" className="mt-2 text-2xl font-bold tracking-tight text-[#1C1C1E] sm:text-3xl">
-            選購常見問題
+          <div className="inline-flex items-center gap-2 font-mono text-[11px] text-[#8C6438] bg-[#F7F3EE] px-3 py-1 rounded-full border border-[#A67C52]/30 shadow-2xs">
+            <span>✦</span>
+            <span>FAQ & VERIFICATION · 選購與避坑常見問題</span>
+          </div>
+          <h2 id="faq-heading" className="mt-3 text-2xl font-extrabold tracking-tight text-[#111111] sm:text-3xl">
+            台灣家電選購與施工避坑問答
           </h2>
-          <p className="mt-2 text-sm text-[#636366]">
-            整理大家在買家電時最容易猶豫與困惑的關鍵問題
+          <p className="mt-2 text-xs sm:text-sm text-[#555555]">
+            匯整台灣消費者在挑選規格、冷房能力、電壓配線與安裝施工時最常遭遇的關鍵疑惑
           </p>
         </div>
 
@@ -20,15 +21,15 @@ export function FaqSection() {
           {faqs.map((item) => (
             <details
               key={item.question}
-              className="apple-card group overflow-hidden border border-black/[0.05] bg-white transition-all open:shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
+              className="skm-card group overflow-hidden border border-black/[0.08] bg-white transition-all shadow-2xs"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between px-6 py-4.5 font-semibold text-[#1C1C1E] transition-colors hover:text-[#0071E3] [&::-webkit-details-marker]:hidden">
-                <span className="text-base font-medium">{item.question}</span>
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F2F2F7] text-xs font-bold text-[#8E8E93] transition-transform duration-200 group-open:rotate-45">
+              <summary className="flex cursor-pointer list-none items-center justify-between px-6 py-4.5 font-bold text-[#111111] transition-colors hover:text-[#A67C52] [&::-webkit-details-marker]:hidden">
+                <span className="text-sm sm:text-base">{item.question}</span>
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#FAF9F8] border border-black/[0.08] text-xs font-bold text-[#777777] transition-transform duration-200 group-open:rotate-45 font-mono">
                   +
                 </span>
               </summary>
-              <div className="border-t border-black/[0.04] px-6 pt-3 pb-5 text-sm leading-relaxed text-[#636366]">
+              <div className="border-t border-black/[0.05] bg-[#FAF9F8]/50 px-6 pt-3.5 pb-5 text-xs sm:text-sm leading-relaxed text-[#555555]">
                 {item.answer}
               </div>
             </details>

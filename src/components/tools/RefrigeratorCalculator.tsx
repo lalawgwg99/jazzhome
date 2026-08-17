@@ -70,30 +70,30 @@ export function RefrigeratorCalculator() {
   return (
     <div className="space-y-6">
       {/* Inset Group 1: Family Members & Habits */}
-      <div className="apple-card border border-black/[0.05] bg-white p-6 sm:p-7">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+      <div className="skm-card border border-black/[0.08] bg-white p-6 sm:p-7 shadow-2xs">
+        <span className="text-xs font-bold uppercase tracking-wider text-[#A67C52] font-mono">
           步驟一：人數與生活型態
         </span>
         <div className="mt-2 flex items-center justify-between">
-          <label className="text-base font-bold text-[#1C1C1E]">
+          <label className="text-base font-bold text-[#111111]">
             同住家庭人數
           </label>
-          <span className="rounded-full bg-[#0071E3]/10 px-3.5 py-1 text-sm font-bold text-[#0071E3]">
+          <span className="rounded bg-[#FAF9F8] px-3.5 py-1 text-sm font-bold font-mono text-[#A67C52] border border-[#A67C52]/30">
             {persons} 人
           </span>
         </div>
 
         {/* Stepper Pills */}
-        <div className="mt-3 flex gap-2">
+        <div className="mt-3.5 flex gap-2">
           {[1, 2, 3, 4, 5, 6].map((num) => (
             <button
               key={num}
               type="button"
               onClick={() => setPersons(num)}
-              className={`apple-btn-active flex-1 rounded-full py-2 text-xs font-semibold transition-all ${
+              className={`skm-btn flex-1 rounded-md py-2 text-xs font-semibold transition-all ${
                 persons === num
-                  ? "bg-[#1C1C1E] text-white"
-                  : "bg-[#F2F2F7] text-[#636366] hover:bg-black/[0.08]"
+                  ? "bg-[#111111] text-[#D4AF37] border border-[#A67C52]/40"
+                  : "bg-[#FAF9F8] text-[#555555] border border-black/[0.06] hover:text-[#111111]"
               }`}
             >
               {num >= 6 ? "6人+" : `${num}人`}
@@ -101,8 +101,8 @@ export function RefrigeratorCalculator() {
           ))}
         </div>
 
-        <div className="mt-6 border-t border-black/[0.04] pt-5">
-          <label className="text-sm font-bold text-[#1C1C1E]">
+        <div className="mt-6 border-t border-black/[0.05] pt-5">
+          <label className="text-sm font-bold text-[#111111]">
             台灣家庭採買囤貨習慣
           </label>
           <div className="mt-3 grid gap-2 sm:grid-cols-3">
@@ -127,21 +127,21 @@ export function RefrigeratorCalculator() {
                 key={habit.id}
                 type="button"
                 onClick={() => setCookingHabit(habit.id)}
-                className={`apple-btn-active rounded-xl p-3.5 text-left border transition-all ${
+                className={`skm-btn rounded-xl p-3.5 text-left border transition-all ${
                   cookingHabit === habit.id
-                    ? "border-[#0071E3] bg-[#0071E3]/[0.04] text-[#0071E3]"
-                    : "border-black/[0.06] bg-white text-[#48484A] hover:bg-[#F2F2F7]"
+                    ? "border-[#A67C52] bg-[#F7F3EE] text-[#8C6438] shadow-2xs"
+                    : "border-black/[0.06] bg-white text-[#555555] hover:bg-[#FAF9F8]"
                 }`}
               >
-                <p className="text-xs font-bold">{habit.label}</p>
-                <p className="mt-1 text-[11px] text-[#8E8E93] leading-snug">{habit.desc}</p>
+                <p className="text-xs font-bold text-[#111111]">{habit.label}</p>
+                <p className="mt-1 text-[11px] text-[#777777] leading-snug">{habit.desc}</p>
               </button>
             ))}
           </div>
         </div>
 
-        <div className="mt-6 border-t border-black/[0.04] pt-5">
-          <label className="text-sm font-bold text-[#1C1C1E]">
+        <div className="mt-6 border-t border-black/[0.05] pt-5">
+          <label className="text-sm font-bold text-[#111111]">
             廚房預留寬度（含散熱）
           </label>
           <div className="mt-3 grid gap-2 sm:grid-cols-3">
@@ -166,68 +166,71 @@ export function RefrigeratorCalculator() {
                 key={w.id}
                 type="button"
                 onClick={() => setKitchenWidth(w.id)}
-                className={`apple-btn-active rounded-xl p-3.5 text-left border transition-all ${
+                className={`skm-btn rounded-xl p-3.5 text-left border transition-all ${
                   kitchenWidth === w.id
-                    ? "border-[#0071E3] bg-[#0071E3]/[0.04] text-[#0071E3]"
-                    : "border-black/[0.06] bg-white text-[#48484A] hover:bg-[#F2F2F7]"
+                    ? "border-[#A67C52] bg-[#F7F3EE] text-[#8C6438] shadow-2xs"
+                    : "border-black/[0.06] bg-white text-[#555555] hover:bg-[#FAF9F8]"
                 }`}
               >
-                <p className="text-xs font-bold">{w.label}</p>
-                <p className="mt-1 text-[11px] text-[#8E8E93] leading-snug">{w.desc}</p>
+                <p className="text-xs font-bold text-[#111111]">{w.label}</p>
+                <p className="mt-1 text-[11px] text-[#777777] leading-snug">{w.desc}</p>
               </button>
             ))}
           </div>
         </div>
 
         {/* Feature Toggles */}
-        <div className="mt-6 border-t border-black/[0.04] pt-4 divide-y divide-black/[0.04]">
+        <div className="mt-6 border-t border-black/[0.05] pt-4 divide-y divide-black/[0.04]">
           <div className="flex items-center justify-between py-2.5">
             <div>
-              <p className="text-xs font-semibold text-[#1C1C1E]">需要「獨立自動製冰」且管路可全拆洗</p>
-              <p className="text-[11px] text-[#8E8E93]">冰塊不吸附海鮮肉品臭味，夏天喝冰飲必備</p>
+              <p className="text-xs font-semibold text-[#111111]">需要「獨立自動製冰」且管路可全拆洗</p>
+              <p className="text-[11px] text-[#777777]">冰塊不吸附海鮮肉品臭味，夏天喝冰飲必備</p>
             </div>
             <input
               type="checkbox"
               checked={needIceMaker}
               onChange={(e) => setNeedIceMaker(e.target.checked)}
-              className="h-4 w-4 rounded accent-[#0071E3]"
+              className="h-4 w-4 rounded accent-[#A67C52]"
             />
           </div>
 
           <div className="flex items-center justify-between py-2.5">
             <div>
-              <p className="text-xs font-semibold text-[#1C1C1E]">需要「蔬果室在中間」免彎腰好拿菜</p>
-              <p className="text-[11px] text-[#8E8E93]">常煮飯拿高麗菜、葉菜類不用頻繁蹲下</p>
+              <p className="text-xs font-semibold text-[#111111]">需要「蔬果室在中間」免彎腰好拿菜</p>
+              <p className="text-[11px] text-[#777777]">常煮飯拿高麗菜、葉菜類不用頻繁蹲下</p>
             </div>
             <input
               type="checkbox"
               checked={needVeggieCenter}
               onChange={(e) => setNeedVeggieCenter(e.target.checked)}
-              className="h-4 w-4 rounded accent-[#0071E3]"
+              className="h-4 w-4 rounded accent-[#A67C52]"
             />
           </div>
         </div>
       </div>
 
       {/* Inset Group 2: Results & Taiwan Refund */}
-      <div className="apple-card overflow-hidden border border-[#0071E3]/20 bg-gradient-to-b from-[#0071E3]/[0.03] to-white p-6 sm:p-8">
+      <div className="skm-card overflow-hidden border border-[#A67C52]/30 bg-white p-6 sm:p-8 shadow-2xs">
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
-              試算結果
-            </span>
-            <h3 className="text-xl font-bold tracking-tight text-[#1C1C1E]">
+            <div className="flex items-center gap-2">
+              <span className="text-[#A67C52] text-sm">✦</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#111111] font-mono">
+                試算結果報告
+              </span>
+            </div>
+            <h3 className="mt-1 text-xl font-extrabold tracking-tight text-[#111111]">
               建議冰箱容量與門型規格
             </h3>
           </div>
           <button
             type="button"
             onClick={handleCopy}
-            className="apple-btn-active inline-flex items-center gap-1 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold text-[#0071E3] shadow-sm border border-black/[0.06] hover:bg-[#F2F2F7]"
+            className="skm-btn inline-flex items-center gap-1.5 rounded-md bg-[#FAF9F8] px-3.5 py-1.5 text-xs font-semibold text-[#111111] border border-black/[0.08] hover:border-[#A67C52]/50"
           >
             {copied ? (
               <>
-                <span className="text-[#34C759]">✓</span>
+                <span className="text-[#047857]">✓</span>
                 <span>已複製報告</span>
               </>
             ) : (
@@ -240,45 +243,45 @@ export function RefrigeratorCalculator() {
         </div>
 
         <div className="mt-5 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-2xl bg-white p-4.5 border border-black/[0.05] shadow-sm">
-            <p className="text-xs font-medium text-[#8E8E93]">建議總容量（公升）</p>
-            <p className="mt-1 text-3xl font-bold tracking-tight text-[#0071E3]">
-              {recommendedLiters} <span className="text-base font-semibold text-[#0071E3]/80">L</span>
+          <div className="rounded-xl bg-[#FAF9F8] p-4.5 border border-black/[0.06]">
+            <p className="text-xs font-medium text-[#777777]">建議總容量（公升）</p>
+            <p className="mt-1 text-3xl font-bold tracking-tight text-[#A67C52] font-mono">
+              {recommendedLiters} <span className="text-base font-sans text-[#777777]">L</span>
             </p>
-            <div className="mt-2 space-y-0.5 text-xs text-[#636366]">
+            <div className="mt-2 space-y-0.5 text-xs text-[#555555]">
               <p>冷藏室：約 <strong>{fridgeLiters} L</strong></p>
               <p>大冷凍室：約 <strong>{freezLiters} L</strong> ({Math.round(freezerRatio * 100)}%)</p>
             </div>
           </div>
 
-          <div className="rounded-2xl bg-white p-4.5 border border-black/[0.05] shadow-sm">
-            <p className="text-xs font-medium text-[#8E8E93]">推薦門型格局</p>
-            <p className="mt-1 text-sm font-bold text-[#1C1C1E] leading-snug">
+          <div className="rounded-xl bg-[#FAF9F8] p-4.5 border border-black/[0.06]">
+            <p className="text-xs font-medium text-[#777777]">推薦門型格局</p>
+            <p className="mt-1 text-sm font-bold text-[#111111] leading-snug">
               {doorType}
             </p>
-            <p className="mt-2 text-xs leading-relaxed text-[#636366]">
+            <p className="mt-2 text-xs leading-relaxed text-[#555555]">
               {doorDesc}
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white p-4.5 border border-[#34C759]/30 bg-[#34C759]/[0.02] shadow-sm">
-            <p className="text-xs font-medium text-[#248A3D]">2026 貨物稅退稅</p>
-            <p className="mt-1 text-3xl font-bold tracking-tight text-[#248A3D]">
+          <div className="rounded-xl bg-[#F7F3EE] p-4.5 border border-[#A67C52]/30">
+            <p className="text-xs font-medium text-[#8C6438] font-mono">2026 貨物稅退稅</p>
+            <p className="mt-1 text-3xl font-bold tracking-tight text-[#8C6438] font-mono">
               NT$ {taxRefund.toLocaleString()}
             </p>
-            <p className="mt-2 text-xs text-[#636366]">
+            <p className="mt-2 text-xs text-[#555555]">
               {recommendedLiters >= 400 ? "≥ 400L 退稅 2,000 元" : "< 400L 退稅 1,200 元"}
             </p>
           </div>
         </div>
 
-        <div className="mt-4 rounded-xl bg-white p-4 border border-black/[0.05] text-xs text-[#48484A]">
-          <p className="font-bold text-[#1C1C1E]">🏆 推薦台灣主流品牌系列：</p>
-          <p className="mt-1 text-[#636366]">{brandRecommendations}</p>
+        <div className="mt-4 rounded-lg bg-[#FAF9F8] p-4 border border-black/[0.06] text-xs text-[#444444]">
+          <p className="font-bold text-[#111111]">🏆 推薦台灣主流品牌系列：</p>
+          <p className="mt-1 text-[#555555]">{brandRecommendations}</p>
         </div>
 
         {/* Clearance Warning */}
-        <div className="mt-4 rounded-xl bg-[#FFF8E6] p-4 text-xs leading-relaxed text-[#855B00] border border-[#FFD080]/40">
+        <div className="mt-4 rounded-lg bg-[#FFFBEB] p-4 text-xs leading-relaxed text-[#92400E] border border-[#B45309]/30">
           ⚠️ <strong>台灣搬運退貨第一名避坑提醒：</strong>
           購買前請務必丈量「電梯大門淨寬」、「住家大門淨寬」與「廚房門淨寬」。通道淨寬需比冰箱機身寬度<strong>多出 5~8 公分以上</strong>（老舊公寓樓梯轉角需多 10 公分），避免師傅到場進不去退貨！
         </div>

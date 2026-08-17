@@ -61,7 +61,6 @@ export function AcCalculator() {
   const totalGovSavings = scrapSubsidy + taxRefund;
 
   // Yearly Summer Electricity savings estimate (vs old fixed-speed tier 4/5)
-  // Approx 120 days * 8 hrs * (suggestedKw * 0.35 kWh saved) * $4.5/kWh average summer tier
   const yearlyPowerSavings = Math.round(120 * 8 * (suggestedKw * 0.38) * 4.5);
 
   const handleCopy = () => {
@@ -84,24 +83,24 @@ export function AcCalculator() {
   return (
     <div className="space-y-6">
       {/* Inset Group 1: Area Input & Method Toggle */}
-      <div className="apple-card border border-black/[0.05] bg-white p-6 sm:p-7">
+      <div className="skm-card border border-black/[0.08] bg-white p-6 sm:p-7 shadow-2xs">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#A67C52] font-mono">
               步驟一：空間大小輸入
             </span>
-            <p className="text-base font-bold text-[#1C1C1E]">室內實際坪數丈量</p>
+            <p className="text-base font-bold text-[#111111]">室內實際坪數丈量</p>
           </div>
 
           {/* Segmented Control for input method */}
-          <div className="flex rounded-full bg-[#F2F2F7] p-1">
+          <div className="flex rounded-lg bg-[#FAF9F8] p-1 border border-black/[0.06]">
             <button
               type="button"
               onClick={() => setInputMode("ping")}
-              className={`apple-btn-active rounded-full px-3.5 py-1 text-xs font-semibold transition-all ${
+              className={`skm-btn rounded-md px-3.5 py-1 text-xs font-semibold transition-all ${
                 inputMode === "ping"
-                  ? "bg-white text-[#1C1C1E] shadow-sm"
-                  : "text-[#8E8E93] hover:text-[#1C1C1E]"
+                  ? "bg-white text-[#111111] shadow-2xs border border-black/[0.08]"
+                  : "text-[#777777] hover:text-[#111111]"
               }`}
             >
               直接選坪數
@@ -109,10 +108,10 @@ export function AcCalculator() {
             <button
               type="button"
               onClick={() => setInputMode("meters")}
-              className={`apple-btn-active rounded-full px-3.5 py-1 text-xs font-semibold transition-all ${
+              className={`skm-btn rounded-md px-3.5 py-1 text-xs font-semibold transition-all ${
                 inputMode === "meters"
-                  ? "bg-white text-[#1C1C1E] shadow-sm"
-                  : "text-[#8E8E93] hover:text-[#1C1C1E]"
+                  ? "bg-white text-[#111111] shadow-2xs border border-black/[0.08]"
+                  : "text-[#777777] hover:text-[#111111]"
               }`}
             >
               長寬公尺換算
@@ -123,8 +122,8 @@ export function AcCalculator() {
         {inputMode === "ping" ? (
           <div className="mt-5 space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-[#636366]">滑動微調坪數：</span>
-              <span className="rounded-full bg-[#0071E3]/10 px-3.5 py-1 text-sm font-bold text-[#0071E3]">
+              <span className="text-sm text-[#555555]">滑動微調坪數：</span>
+              <span className="rounded bg-[#FAF9F8] px-3.5 py-1 text-sm font-bold font-mono text-[#A67C52] border border-[#A67C52]/30">
                 {ping} 坪
               </span>
             </div>
@@ -136,7 +135,7 @@ export function AcCalculator() {
               step={0.5}
               value={ping}
               onChange={(e) => setPing(Number(e.target.value))}
-              className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-[#E5E5EA]"
+              className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-[#E5E5EA] accent-[#A67C52]"
             />
 
             {/* Quick Presets */}
@@ -146,10 +145,10 @@ export function AcCalculator() {
                   key={preset.label}
                   type="button"
                   onClick={() => setPing(preset.ping)}
-                  className={`apple-btn-active rounded-full px-3 py-1 text-xs font-semibold transition-all ${
+                  className={`skm-btn rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${
                     ping === preset.ping
-                      ? "bg-[#1C1C1E] text-white"
-                      : "bg-[#F2F2F7] text-[#636366] hover:bg-black/[0.08]"
+                      ? "bg-[#111111] text-[#D4AF37] border border-[#A67C52]/40"
+                      : "bg-[#FAF9F8] text-[#555555] border border-black/[0.06] hover:text-[#111111]"
                   }`}
                 >
                   {preset.label} ({preset.ping}坪)
@@ -160,8 +159,8 @@ export function AcCalculator() {
         ) : (
           <div className="mt-5 space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl bg-[#F9F9FB] p-3.5 border border-black/[0.04]">
-                <label className="text-xs font-medium text-[#8E8E93]">房間長度 (公尺 m)</label>
+              <div className="rounded-xl bg-[#FAF9F8] p-3.5 border border-black/[0.06]">
+                <label className="text-xs font-medium text-[#777777]">房間長度 (公尺 m)</label>
                 <div className="mt-1 flex items-center justify-between">
                   <input
                     type="number"
@@ -170,14 +169,14 @@ export function AcCalculator() {
                     max="20"
                     value={lengthM}
                     onChange={(e) => setLengthM(Math.max(1, Number(e.target.value)))}
-                    className="w-24 rounded-lg border border-black/[0.1] bg-white px-2.5 py-1 text-base font-bold text-[#1C1C1E]"
+                    className="w-24 rounded-lg border border-black/[0.1] bg-white px-2.5 py-1 text-base font-bold text-[#111111]"
                   />
-                  <span className="text-xs text-[#8E8E93]">公尺</span>
+                  <span className="text-xs text-[#777777]">公尺</span>
                 </div>
               </div>
 
-              <div className="rounded-xl bg-[#F9F9FB] p-3.5 border border-black/[0.04]">
-                <label className="text-xs font-medium text-[#8E8E93]">房間寬度 (公尺 m)</label>
+              <div className="rounded-xl bg-[#FAF9F8] p-3.5 border border-black/[0.06]">
+                <label className="text-xs font-medium text-[#777777]">房間寬度 (公尺 m)</label>
                 <div className="mt-1 flex items-center justify-between">
                   <input
                     type="number"
@@ -186,14 +185,14 @@ export function AcCalculator() {
                     max="20"
                     value={widthM}
                     onChange={(e) => setWidthM(Math.max(1, Number(e.target.value)))}
-                    className="w-24 rounded-lg border border-black/[0.1] bg-white px-2.5 py-1 text-base font-bold text-[#1C1C1E]"
+                    className="w-24 rounded-lg border border-black/[0.1] bg-white px-2.5 py-1 text-base font-bold text-[#111111]"
                   />
-                  <span className="text-xs text-[#8E8E93]">公尺</span>
+                  <span className="text-xs text-[#777777]">公尺</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between rounded-xl bg-[#0071E3]/[0.06] px-4 py-2.5 text-xs text-[#0071E3]">
+            <div className="flex items-center justify-between rounded-xl bg-[#FAF9F8] px-4 py-2.5 text-xs text-[#8C6438] border border-[#A67C52]/20 font-mono">
               <span>換算結果：{lengthM}m × {widthM}m = {(lengthM * widthM).toFixed(1)} 平方公尺</span>
               <span className="font-bold text-sm">約 {currentPing} 坪</span>
             </div>
@@ -202,14 +201,14 @@ export function AcCalculator() {
       </div>
 
       {/* Inset Group 2: Taiwan Climate & Structure Factors */}
-      <div className="apple-card border border-black/[0.05] bg-white p-6 sm:p-7">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+      <div className="skm-card border border-black/[0.08] bg-white p-6 sm:p-7 shadow-2xs">
+        <span className="text-xs font-bold uppercase tracking-wider text-[#A67C52] font-mono">
           步驟二：台灣建築環境加成
         </span>
-        <h3 className="mt-1 text-base font-bold text-[#1C1C1E]">
+        <h3 className="mt-1 text-base font-bold text-[#111111]">
           環境熱源加成（精確避開下午吹不涼）
         </h3>
-        <p className="mt-1 text-xs text-[#8E8E93]">
+        <p className="mt-1 text-xs text-[#777777]">
           台灣夏季悶熱，若有頂樓或西曬熱源，系統將自動依甲級工程規範上調安全能力
         </p>
 
@@ -248,24 +247,27 @@ export function AcCalculator() {
       </div>
 
       {/* Inset Group 3: Realtime Calculated Results + Subsidies + Electricity */}
-      <div className="apple-card overflow-hidden border border-[#0071E3]/20 bg-gradient-to-b from-[#0071E3]/[0.03] to-white p-6 sm:p-8">
+      <div className="skm-card overflow-hidden border border-[#A67C52]/30 bg-white p-6 sm:p-8 shadow-2xs">
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
-              試算結果
-            </span>
-            <h3 className="text-xl font-bold tracking-tight text-[#1C1C1E]">
+            <div className="flex items-center gap-2">
+              <span className="text-[#A67C52] text-sm">✦</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#111111] font-mono">
+                試算結果
+              </span>
+            </div>
+            <h3 className="mt-1 text-xl font-extrabold tracking-tight text-[#111111]">
               冷房規格與 2026 補助試算
             </h3>
           </div>
           <button
             type="button"
             onClick={handleCopy}
-            className="apple-btn-active inline-flex items-center gap-1 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold text-[#0071E3] shadow-sm border border-black/[0.06] hover:bg-[#F2F2F7]"
+            className="skm-btn inline-flex items-center gap-1.5 rounded-md bg-[#FAF9F8] px-3.5 py-1.5 text-xs font-semibold text-[#111111] border border-black/[0.08] hover:border-[#A67C52]/50"
           >
             {copied ? (
               <>
-                <span className="text-[#34C759]">✓</span>
+                <span className="text-[#047857]">✓</span>
                 <span>已複製報告</span>
               </>
             ) : (
@@ -279,70 +281,68 @@ export function AcCalculator() {
 
         {/* 4-Card Spec & Subsidy Matrix */}
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-2xl bg-white p-4.5 border border-black/[0.05] shadow-sm">
-            <p className="text-xs font-medium text-[#8E8E93]">建議精確冷房能力</p>
-            <p className="mt-1 text-2xl font-bold tracking-tight text-[#1C1C1E]">
-              {calculatedKw} <span className="text-sm font-semibold text-[#636366]">kW</span>
+          <div className="rounded-xl bg-[#FAF9F8] p-4.5 border border-black/[0.06]">
+            <p className="text-xs font-medium text-[#777777]">建議精確冷房能力</p>
+            <p className="mt-1 text-2xl font-bold tracking-tight text-[#111111] font-mono">
+              {calculatedKw} <span className="text-sm font-sans font-normal text-[#777777]">kW</span>
             </p>
-            <p className="mt-1 text-[11px] text-[#8E8E93]">
+            <p className="mt-1 text-[11px] text-[#777777]">
               約合 <strong>{calculatedTons} 台灣噸</strong>
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white p-4.5 border border-[#0071E3]/30 bg-[#0071E3]/[0.02] shadow-sm">
-            <p className="text-xs font-medium text-[#0071E3]">推薦市售對應機種</p>
-            <p className="mt-1 text-2xl font-bold tracking-tight text-[#0071E3]">
-              {suggestedKw} <span className="text-sm font-semibold">kW</span>
+          <div className="rounded-xl bg-[#FAF9F8] p-4.5 border border-[#A67C52]/30">
+            <p className="text-xs font-medium text-[#8C6438] font-mono">推薦市售對應機種</p>
+            <p className="mt-1 text-2xl font-bold tracking-tight text-[#A67C52] font-mono">
+              {suggestedKw} <span className="text-sm font-sans font-normal text-[#777777]">kW</span>
             </p>
-            <p className="mt-1 text-[11px] text-[#636366]">
+            <p className="mt-1 text-[11px] text-[#555555]">
               選 <strong>CSPF 1 級能效</strong> 最省電
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white p-4.5 border border-[#34C759]/30 bg-[#34C759]/[0.02] shadow-sm">
-            <div className="flex items-center justify-between">
-              <p className="text-xs font-medium text-[#248A3D]">2026 政府補助退稅</p>
-            </div>
-            <p className="mt-1 text-2xl font-bold tracking-tight text-[#248A3D]">
+          <div className="rounded-xl bg-[#F7F3EE] p-4.5 border border-[#A67C52]/30">
+            <p className="text-xs font-medium text-[#8C6438] font-mono">2026 政府補助退稅</p>
+            <p className="mt-1 text-2xl font-bold tracking-tight text-[#8C6438] font-mono">
               NT$ {totalGovSavings.toLocaleString()}
             </p>
-            <p className="mt-1 text-[11px] text-[#636366]">
+            <p className="mt-1 text-[11px] text-[#555555]">
               汰舊換新 $3,000 + 退稅 ${taxRefund}
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white p-4.5 border border-black/[0.05] shadow-sm">
-            <p className="text-xs font-medium text-[#8E8E93]">夏季電費年省預估</p>
-            <p className="mt-1 text-2xl font-bold tracking-tight text-[#1C1C1E]">
+          <div className="rounded-xl bg-[#FAF9F8] p-4.5 border border-black/[0.06]">
+            <p className="text-xs font-medium text-[#777777]">夏季電費年省預估</p>
+            <p className="mt-1 text-2xl font-bold tracking-tight text-[#111111] font-mono">
               約 NT$ {yearlyPowerSavings.toLocaleString()}
             </p>
-            <p className="mt-1 text-[11px] text-[#8E8E93]">
+            <p className="mt-1 text-[11px] text-[#777777]">
               比老舊 4 級定頻每年省
             </p>
           </div>
         </div>
 
         {/* Subsidy Toggle */}
-        <div className="mt-4 flex items-center justify-between rounded-xl bg-white p-3.5 border border-black/[0.05]">
+        <div className="mt-4 flex items-center justify-between rounded-xl bg-white p-3.5 border border-black/[0.06]">
           <div className="flex items-center gap-2">
             <input
               id="scrap-check"
               type="checkbox"
               checked={hasOldAcToScrap}
               onChange={(e) => setHasOldAcToScrap(e.target.checked)}
-              className="h-4 w-4 rounded accent-[#0071E3]"
+              className="h-4 w-4 rounded accent-[#A67C52]"
             />
-            <label htmlFor="scrap-check" className="text-xs font-medium text-[#1C1C1E] cursor-pointer">
+            <label htmlFor="scrap-check" className="text-xs font-medium text-[#111111] cursor-pointer">
               我有舊冷氣需請師傅回收報廢（享有 3,000 元汰舊換新補助 + 廢四機回收單）
             </label>
           </div>
-          <span className="text-xs font-semibold text-[#0071E3] hidden sm:inline">
+          <span className="text-xs font-semibold text-[#A67C52] hidden sm:inline font-mono">
             {hasOldAcToScrap ? "最高可領 $5,000" : `可領退稅 $${taxRefund}`}
           </span>
         </div>
 
-        <div className="mt-4 rounded-xl bg-[#F2F2F7]/70 p-4 text-xs leading-relaxed text-[#636366]">
-          💡 <strong>台灣選購建議：</strong>
+        <div className="mt-4 rounded-lg bg-[#FAF9F8] p-4 text-xs leading-relaxed text-[#555555] border border-black/[0.04]">
+          ✦ <strong>台灣選購建議：</strong>
           市售主力機型為 2.2kW (約3-4坪)、2.8kW (約4-5坪)、3.6kW (約6-7坪)、4.1kW (約7-8坪)、5.0kW (約8-10坪)、6.3kW (約10-12坪)、7.1kW (約12-14坪)。
           若房間有頂樓或西曬，請務必按照加成後的 <strong>{suggestedKw} kW</strong> 選購，避免壓縮機在夏日午後長時間超頻運轉損耗。
         </div>
@@ -372,8 +372,8 @@ function ToggleRow({
   return (
     <div className="flex items-center justify-between py-3">
       <div className="pr-4">
-        <p className="text-sm font-medium text-[#1C1C1E]">{label}</p>
-        <p className="text-xs text-[#8E8E93]">{desc}</p>
+        <p className="text-sm font-bold text-[#111111]">{label}</p>
+        <p className="text-xs text-[#777777]">{desc}</p>
       </div>
       <button
         type="button"
@@ -381,7 +381,7 @@ function ToggleRow({
         aria-checked={checked}
         onClick={() => onChange(!checked)}
         className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-          checked ? "bg-[#0071E3]" : "bg-[#E5E5EA]"
+          checked ? "bg-[#111111]" : "bg-[#E5E5EA]"
         }`}
       >
         <span

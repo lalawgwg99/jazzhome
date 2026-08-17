@@ -51,27 +51,27 @@ export function WashingMachineCalculator() {
   return (
     <div className="space-y-6">
       {/* Inset Group 1: Inputs */}
-      <div className="apple-card border border-black/[0.05] bg-white p-6 sm:p-7">
+      <div className="skm-card border border-black/[0.08] bg-white p-6 sm:p-7 shadow-2xs">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-semibold text-[#1C1C1E]">
+          <label className="text-sm font-bold text-[#111111]">
             同住家庭人數
           </label>
-          <span className="rounded-full bg-[#0071E3]/10 px-3 py-1 text-sm font-bold text-[#0071E3]">
+          <span className="rounded bg-[#FAF9F8] px-3 py-1 text-sm font-bold font-mono text-[#A67C52] border border-[#A67C52]/30">
             {familyMembers} 人
           </span>
         </div>
 
         {/* Number Buttons */}
-        <div className="mt-3 flex gap-2">
+        <div className="mt-3.5 flex gap-2">
           {[1, 2, 3, 4, 5, 6].map((num) => (
             <button
               key={num}
               type="button"
               onClick={() => setFamilyMembers(num)}
-              className={`apple-btn-active flex-1 rounded-full py-1.5 text-xs font-semibold transition-all ${
+              className={`skm-btn flex-1 rounded-md py-2 text-xs font-semibold transition-all ${
                 familyMembers === num
-                  ? "bg-[#1C1C1E] text-white"
-                  : "bg-[#F2F2F7] text-[#636366] hover:bg-black/[0.08]"
+                  ? "bg-[#111111] text-[#D4AF37] border border-[#A67C52]/40"
+                  : "bg-[#FAF9F8] text-[#555555] border border-black/[0.06] hover:text-[#111111]"
               }`}
             >
               {num >= 6 ? "6人+" : `${num}人`}
@@ -79,8 +79,8 @@ export function WashingMachineCalculator() {
           ))}
         </div>
 
-        <div className="mt-6 border-t border-black/[0.04] pt-5">
-          <label className="text-sm font-semibold text-[#1C1C1E]">
+        <div className="mt-6 border-t border-black/[0.05] pt-5">
+          <label className="text-sm font-bold text-[#111111]">
             被單與床包清洗需求
           </label>
           <div className="mt-3 grid gap-2 sm:grid-cols-3">
@@ -93,21 +93,21 @@ export function WashingMachineCalculator() {
                 key={item.id}
                 type="button"
                 onClick={() => setBeddingType(item.id)}
-                className={`apple-btn-active rounded-xl p-3 text-left border transition-all ${
+                className={`skm-btn rounded-xl p-3 text-left border transition-all ${
                   beddingType === item.id
-                    ? "border-[#0071E3] bg-[#0071E3]/[0.04] text-[#0071E3]"
-                    : "border-black/[0.06] bg-white text-[#48484A] hover:bg-[#F2F2F7]"
+                    ? "border-[#A67C52] bg-[#F7F3EE] text-[#8C6438] shadow-2xs"
+                    : "border-black/[0.06] bg-white text-[#555555] hover:bg-[#FAF9F8]"
                 }`}
               >
-                <p className="text-xs font-bold">{item.label}</p>
-                <p className="mt-1 text-[11px] text-[#8E8E93] leading-snug">{item.desc}</p>
+                <p className="text-xs font-bold text-[#111111]">{item.label}</p>
+                <p className="mt-1 text-[11px] text-[#777777] leading-snug">{item.desc}</p>
               </button>
             ))}
           </div>
         </div>
 
-        <div className="mt-6 border-t border-black/[0.04] pt-5">
-          <label className="text-sm font-semibold text-[#1C1C1E]">
+        <div className="mt-6 border-t border-black/[0.05] pt-5">
+          <label className="text-sm font-bold text-[#111111]">
             陽台通風與曬衣環境
           </label>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -119,60 +119,63 @@ export function WashingMachineCalculator() {
                 key={env.id}
                 type="button"
                 onClick={() => setBalconySun(env.id)}
-                className={`apple-btn-active rounded-xl p-3 text-left border transition-all ${
+                className={`skm-btn rounded-xl p-3 text-left border transition-all ${
                   balconySun === env.id
-                    ? "border-[#0071E3] bg-[#0071E3]/[0.04] text-[#0071E3]"
-                    : "border-black/[0.06] bg-white text-[#48484A] hover:bg-[#F2F2F7]"
+                    ? "border-[#A67C52] bg-[#F7F3EE] text-[#8C6438] shadow-2xs"
+                    : "border-black/[0.06] bg-white text-[#555555] hover:bg-[#FAF9F8]"
                 }`}
               >
-                <p className="text-xs font-bold">{env.label}</p>
-                <p className="mt-1 text-[11px] text-[#8E8E93] leading-snug">{env.desc}</p>
+                <p className="text-xs font-bold text-[#111111]">{env.label}</p>
+                <p className="mt-1 text-[11px] text-[#777777] leading-snug">{env.desc}</p>
               </button>
             ))}
           </div>
         </div>
 
-        <div className="mt-6 border-t border-black/[0.04] pt-5">
-          <label className="text-sm font-semibold text-[#1C1C1E]">
-            衣物保養偏好
+        <div className="mt-6 border-t border-black/[0.05] pt-5">
+          <label className="text-sm font-bold text-[#111111]">
+            衣物材質與護衣需求
           </label>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             {[
-              { id: "standard" as const, label: "日常耐洗棉質為主", desc: "重視洗程快速、泥沙沖洗力與實惠耐用" },
-              { id: "delicate" as const, label: "常穿襯衫/羊毛/怕拉扯", desc: "重視防打結、不傷高級衣料、溫水抑菌洗" },
+              { id: "standard" as const, label: "一般棉質與日常休閒服", desc: "追求洗程快速、洗淨力強即可" },
+              { id: "delicate" as const, label: "襯衫、針織、絲質高階衣物", desc: "極需溫水洗淨、防打結防變形功能" },
             ].map((care) => (
               <button
                 key={care.id}
                 type="button"
                 onClick={() => setFabricCare(care.id)}
-                className={`apple-btn-active rounded-xl p-3 text-left border transition-all ${
+                className={`skm-btn rounded-xl p-3 text-left border transition-all ${
                   fabricCare === care.id
-                    ? "border-[#0071E3] bg-[#0071E3]/[0.04] text-[#0071E3]"
-                    : "border-black/[0.06] bg-white text-[#48484A] hover:bg-[#F2F2F7]"
+                    ? "border-[#A67C52] bg-[#F7F3EE] text-[#8C6438] shadow-2xs"
+                    : "border-black/[0.06] bg-white text-[#555555] hover:bg-[#FAF9F8]"
                 }`}
               >
-                <p className="text-xs font-bold">{care.label}</p>
-                <p className="mt-1 text-[11px] text-[#8E8E93] leading-snug">{care.desc}</p>
+                <p className="text-xs font-bold text-[#111111]">{care.label}</p>
+                <p className="mt-1 text-[11px] text-[#777777] leading-snug">{care.desc}</p>
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Inset Group 2: Output Analysis */}
-      <div className="apple-card overflow-hidden border border-[#0071E3]/20 bg-gradient-to-b from-[#0071E3]/[0.03] to-white p-6 sm:p-8">
+      {/* Inset Group 2: Output */}
+      <div className="skm-card overflow-hidden border border-[#A67C52]/30 bg-white p-6 sm:p-8 shadow-2xs">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
-            建議洗衣容量與選型分析
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-[#A67C52] text-sm">✦</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#111111] font-mono">
+              洗衣機規格試算結果
+            </span>
+          </div>
           <button
             type="button"
             onClick={handleCopy}
-            className="apple-btn-active inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#0071E3] shadow-sm border border-black/[0.06] hover:bg-[#F2F2F7]"
+            className="skm-btn inline-flex items-center gap-1.5 rounded-md bg-[#FAF9F8] px-3 py-1 text-xs font-semibold text-[#111111] border border-black/[0.08] hover:border-[#A67C52]/50"
           >
             {copied ? (
               <>
-                <span className="text-[#34C759]">✓</span>
+                <span className="text-[#047857]">✓</span>
                 <span>已複製結果</span>
               </>
             ) : (
@@ -184,43 +187,38 @@ export function WashingMachineCalculator() {
           </button>
         </div>
 
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl bg-white p-5 border border-black/[0.04] shadow-sm">
-            <p className="text-xs font-medium text-[#8E8E93]">建議最低洗衣容量</p>
-            <p className="mt-1 text-3xl font-bold tracking-tight text-[#0071E3]">
-              {recommendedKg} <span className="text-lg font-semibold text-[#0071E3]/80">kg</span>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-xl bg-[#FAF9F8] p-5 border border-black/[0.06]">
+            <p className="text-xs font-medium text-[#777777]">建議洗衣容量（公斤）</p>
+            <p className="mt-1 text-3xl font-bold tracking-tight text-[#A67C52] font-mono">
+              {recommendedKg} <span className="text-base font-sans text-[#777777]">kg 以上</span>
             </p>
-            <p className="mt-1 text-xs text-[#636366]">
-              滿足 {familyMembers} 人日常換洗與
-              {beddingType === "heavy"
-                ? " 雙人厚被單翻滾清洗"
-                : beddingType === "double"
-                ? " 雙人床包清洗"
-                : " 單人被單清洗"}
+            <p className="mt-2 text-xs leading-relaxed text-[#555555]">
+              符合 {familyMembers} 人家庭連續 2~3 天換洗衣物與床包清洗之安全餘裕
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white p-5 border border-black/[0.04] shadow-sm">
-            <p className="text-xs font-medium text-[#8E8E93]">推薦機型架構</p>
-            <p className="mt-1 text-base font-bold text-[#1C1C1E]">
-              {isDrumRecommended ? "滾筒式洗衣機 / 洗脫烘" : "直立式變頻洗衣機"}
+          <div className="rounded-xl bg-[#FAF9F8] p-5 border border-black/[0.06]">
+            <p className="text-xs font-medium text-[#777777]">推薦機型型態</p>
+            <p className="mt-1 text-sm font-bold text-[#111111] leading-snug">
+              {decisionTitle}
             </p>
-            <p className="mt-1 text-xs leading-relaxed text-[#636366]">
+            <p className="mt-2 text-xs leading-relaxed text-[#555555]">
               {decisionDesc}
             </p>
           </div>
         </div>
 
-        <div className="mt-4 rounded-xl bg-[#F2F2F7]/70 p-4 text-xs leading-relaxed text-[#636366]">
-          💡 <strong>烘衣容量叮嚀：</strong>
-          若選購「洗脫烘一體機」，原廠標示的烘乾容量通常為洗衣容量的 60%（例如洗 12kg、烘 8kg）。建議日常洗衣可裝 8 分滿，若需當次直接烘乾則放 6 分滿，烘乾效果最蓬鬆且無皺痕。
+        <div className="mt-4 rounded-lg bg-[#FAF9F8] p-4 border border-black/[0.06] text-xs text-[#555555]">
+          ✦ <strong>陽台水電安裝提醒：</strong>
+          購買滾筒洗脫烘前，請確認陽台供電為 110V 還是 220V（歐美熱泵乾衣機多為 220V 需專用插座）。落水孔建議換裝「專用防溢泡沫落水接頭」防止瞬時大排水溢流。
         </div>
       </div>
 
       <LineCta
         variant="banner"
-        title="陽台空間狹窄？不知道選洗脫烘還是一體機？"
-        description="拍下陽台水龍頭、排水孔與預留放置寬度傳到 LINE，免費協助評估動線與堆疊安裝可行性。"
+        title="陽台水電格局特殊？不確定能不能裝洗脫烘？"
+        description="拍下陽台水龍頭、插座與落水孔照片傳到 LINE，由專業水電技師免費為您評估電壓、排水與堆疊施工條件。"
       />
     </div>
   );

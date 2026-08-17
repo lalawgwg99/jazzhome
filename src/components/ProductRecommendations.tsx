@@ -16,7 +16,7 @@ export function ProductRecommendations({
 
   return (
     <section className="mt-10">
-      <h3 className="text-base font-bold text-[#1C1C1E]">{title}</h3>
+      <h3 className="text-base font-bold text-[#111111]">{title}</h3>
       <AffiliateDisclosure className="mt-2" />
       <div className="mt-4 space-y-3">
         {activeProducts.map((product) => {
@@ -24,7 +24,7 @@ export function ProductRecommendations({
           return (
             <div
               key={`${product.platform}-${product.name}`}
-              className="apple-card flex flex-col gap-3 p-5 border border-black/[0.05] bg-white sm:flex-row sm:items-center sm:justify-between"
+              className="skm-card flex flex-col gap-3 p-5 border border-black/[0.08] bg-white sm:flex-row sm:items-center sm:justify-between shadow-2xs"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
@@ -33,13 +33,13 @@ export function ProductRecommendations({
                   >
                     {platform.name}
                   </span>
-                  <p className="font-semibold text-[#1C1C1E]">{product.name}</p>
+                  <p className="font-bold text-[#111111]">{product.name}</p>
                 </div>
                 {product.note && (
-                  <p className="text-xs text-[#636366]">{product.note}</p>
+                  <p className="text-xs text-[#555555]">{product.note}</p>
                 )}
                 {product.price && (
-                  <p className="text-xs font-medium text-[#1C1C1E]">
+                  <p className="text-xs font-mono font-medium text-[#111111]">
                     參考售價：{product.price}
                   </p>
                 )}
@@ -68,7 +68,7 @@ function AffiliateButton({
 }) {
   if (!href) {
     return (
-      <span className="text-xs text-[#8E8E93]">通路連結整理中</span>
+      <span className="text-xs text-[#777777] font-mono">通路連結整理中</span>
     );
   }
 
@@ -78,10 +78,9 @@ function AffiliateButton({
       target="_blank"
       rel="noopener noreferrer sponsored"
       data-affiliate={platform}
-      className="apple-btn-active inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full bg-[#1C1C1E] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-black"
+      className="skm-btn inline-flex shrink-0 items-center justify-center gap-1.5 rounded-md bg-[#111111] px-4 py-2 text-xs font-semibold text-[#D4AF37] border border-[#A67C52]/40 shadow-xs hover:bg-black"
     >
-      <span>前往 {label} 查看</span>
-      <span>→</span>
+      <span>前往 {label} 查看 ↗</span>
     </a>
   );
 }

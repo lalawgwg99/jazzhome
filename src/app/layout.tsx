@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-Hant-TW" className="h-full scroll-smooth">
-      <body className="flex min-h-full flex-col bg-[#F2F2F7] text-[#1C1C1E] antialiased selection:bg-[#0071E3]/15 selection:text-[#0071E3]">
+      <body className="flex min-h-full flex-col bg-[#FAF9F8] text-[#111111] antialiased selection:bg-[#A67C52]/20 selection:text-[#A67C52]">
         <GoogleAnalytics />
         <Header />
         <main className="flex-1">{children}</main>

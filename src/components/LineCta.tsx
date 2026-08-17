@@ -29,7 +29,7 @@ export function LineCta({
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className="apple-btn-active inline-flex items-center gap-2 rounded-full bg-[#1C1C1E] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-black"
+        className="skm-btn inline-flex items-center gap-2 rounded-full bg-[#111111] px-4 py-2 text-xs font-semibold text-[#D4AF37] border border-[#A67C52]/40 shadow-xs hover:bg-black"
       >
         <LineLogo className="h-4 w-4 text-[#06C755]" />
         <span>LINE 免費諮詢</span>
@@ -39,26 +39,26 @@ export function LineCta({
 
   if (variant === "banner") {
     return (
-      <div className="apple-card border border-black/[0.06] bg-gradient-to-br from-white to-[#F8F8FA] p-6 sm:p-7">
+      <div className="skm-card bg-white p-6 sm:p-7 border border-[#A67C52]/30 shadow-2xs">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#06C755]/10 text-xs text-[#06C755]">
                 <LineLogo className="h-3.5 w-3.5" />
               </span>
-              <p className="text-base font-semibold text-[#1C1C1E]">{title}</p>
+              <p className="text-base font-bold text-[#111111]">{title}</p>
             </div>
-            <p className="max-w-xl text-sm leading-relaxed text-[#636366]">{description}</p>
+            <p className="max-w-xl text-xs sm:text-sm leading-relaxed text-[#555555]">{description}</p>
           </div>
           <a
             href={lineUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleClick}
-            className="apple-btn-active inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#0071E3] px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_8px_rgba(0,113,227,0.25)] hover:bg-[#0077ED]"
+            className="skm-btn inline-flex shrink-0 items-center justify-center gap-2 rounded-md bg-[#111111] px-6 py-3 text-xs sm:text-sm font-semibold text-[#D4AF37] border border-[#A67C52]/40 shadow-xs hover:bg-black"
           >
-            <LineLogo className="h-4 w-4 text-white" />
-            <span>傳照片免費評估</span>
+            <LineLogo className="h-4 w-4 text-[#06C755]" />
+            <span>傳照片免費評估 ↗</span>
           </a>
         </div>
       </div>
@@ -66,21 +66,21 @@ export function LineCta({
   }
 
   return (
-    <div className="apple-card border border-black/[0.06] bg-white p-6 sm:p-7">
+    <div className="skm-card bg-white p-6 sm:p-7 border border-black/[0.08] shadow-2xs">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#F2F2F7] text-[#0071E3]">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#FAF9F8] border border-black/[0.06]">
           <LineLogo className="h-6 w-6 text-[#06C755]" />
         </div>
         <div className="flex-1 space-y-2">
-          <p className="text-base font-semibold text-[#1C1C1E]">{title}</p>
-          <p className="text-sm leading-relaxed text-[#636366]">{description}</p>
+          <p className="text-base font-bold text-[#111111]">{title}</p>
+          <p className="text-xs sm:text-sm leading-relaxed text-[#555555]">{description}</p>
           <div className="pt-2">
             <a
               href={lineUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleClick}
-              className="apple-btn-active inline-flex items-center gap-2 rounded-full bg-[#1C1C1E] px-5 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-black"
+              className="skm-btn inline-flex items-center gap-2 rounded-md bg-[#111111] px-5 py-2.5 text-xs font-semibold text-[#D4AF37] border border-[#A67C52]/40 shadow-xs hover:bg-black"
             >
               <span>加入 LINE 官方帳號諮詢</span>
               <span>→</span>

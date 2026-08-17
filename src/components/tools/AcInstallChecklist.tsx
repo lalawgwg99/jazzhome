@@ -133,17 +133,17 @@ export function AcInstallChecklist() {
   return (
     <div className="space-y-6">
       {/* Inset Group: Progress Bar & Actions */}
-      <div className="apple-card border border-black/[0.05] bg-white p-6 sm:p-7">
+      <div className="skm-card border border-black/[0.08] bg-white p-6 sm:p-7 shadow-2xs">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#A67C52] font-mono">
               施工監工與避坑進度
             </span>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-3xl font-bold tracking-tight text-[#1C1C1E]">
+              <span className="text-3xl font-bold tracking-tight text-[#111111] font-mono">
                 {progressPercent}%
               </span>
-              <span className="text-sm font-medium text-[#8E8E93]">
+              <span className="text-sm font-medium text-[#777777]">
                 （已查核 {checkedIds.size} / {CHECKLIST_ITEMS.length} 項）
               </span>
             </div>
@@ -153,18 +153,18 @@ export function AcInstallChecklist() {
             <button
               type="button"
               onClick={handleSelectAll}
-              className="apple-btn-active rounded-full bg-[#F2F2F7] px-3.5 py-1.5 text-xs font-semibold text-[#48484A] hover:bg-black/[0.08]"
+              className="skm-btn rounded-md bg-[#FAF9F8] px-3.5 py-1.5 text-xs font-semibold text-[#555555] border border-black/[0.06] hover:text-[#111111]"
             >
               {checkedIds.size === CHECKLIST_ITEMS.length ? "重設清單" : "全選"}
             </button>
             <button
               type="button"
               onClick={handleCopySummary}
-              className="apple-btn-active inline-flex items-center gap-1.5 rounded-full bg-[#0071E3] px-4 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-[#0077ED]"
+              className="skm-btn inline-flex items-center gap-1.5 rounded-md bg-[#111111] px-4 py-1.5 text-xs font-semibold text-[#D4AF37] border border-[#A67C52]/40 shadow-xs hover:bg-black"
             >
               {copied ? (
                 <>
-                  <span className="text-white">✓</span>
+                  <span className="text-[#D4AF37]">✓</span>
                   <span>已複製文字</span>
                 </>
               ) : (
@@ -178,60 +178,60 @@ export function AcInstallChecklist() {
         </div>
 
         {/* Progress Bar */}
-        <div className="mt-4 h-2.5 w-full overflow-hidden rounded-full bg-[#E5E5EA]">
+        <div className="mt-4 h-2.5 w-full overflow-hidden rounded-full bg-[#FAF9F8] border border-black/[0.06]">
           <div
-            className="h-full rounded-full bg-[#34C759] transition-all duration-300 ease-out"
+            className="h-full rounded-full bg-[#A67C52] transition-all duration-300 ease-out"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
       </div>
 
       {/* Taiwan Installation Extra Fees Collapsible Card */}
-      <div className="apple-card overflow-hidden border border-black/[0.05] bg-white">
+      <div className="skm-card overflow-hidden border border-black/[0.08] bg-white shadow-2xs">
         <button
           type="button"
           onClick={() => setShowFeeTable(!showFeeTable)}
-          className="flex w-full items-center justify-between bg-[#F9F9FB] px-6 py-4 text-left transition-colors hover:bg-black/[0.02]"
+          className="flex w-full items-center justify-between bg-[#FAF9F8] px-6 py-4 text-left transition-colors hover:bg-black/[0.02]"
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <span className="text-lg">💰</span>
             <div>
-              <p className="text-sm font-bold text-[#1C1C1E]">
+              <p className="text-sm font-bold text-[#111111]">
                 台灣冷氣標準安裝「常見現場加價收費行情表」
               </p>
-              <p className="text-xs text-[#8E8E93]">
+              <p className="text-xs text-[#777777]">
                 銅管超長、洗洞、室外機鐵架公會行情，避免現場被漫天開價
               </p>
             </div>
           </div>
-          <span className="text-xs font-semibold text-[#0071E3]">
+          <span className="text-xs font-semibold text-[#A67C52]">
             {showFeeTable ? "收起行情" : "查看行情 ›"}
           </span>
         </button>
 
         {showFeeTable && (
-          <div className="border-t border-black/[0.04] p-4 sm:p-6">
+          <div className="border-t border-black/[0.05] p-4 sm:p-6">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm">
-                <thead className="border-b border-black/[0.06] bg-[#F2F2F7] text-xs font-bold text-[#1C1C1E]">
+                <thead className="border-b border-black/[0.08] bg-[#FAF9F8] text-xs font-bold text-[#111111] font-mono">
                   <tr>
                     <th className="px-4 py-3">加價項目</th>
                     <th className="px-4 py-3">規格說明</th>
                     <th className="px-4 py-3 whitespace-nowrap">台灣常態行情 (新台幣)</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-black/[0.04] text-[#48484A]">
+                <tbody className="divide-y divide-black/[0.04] text-[#444444]">
                   {TAIWAN_EXTRA_FEES.map((fee, idx) => (
-                    <tr key={idx} className="hover:bg-[#F9F9FB]">
-                      <td className="px-4 py-3 font-semibold text-[#1C1C1E]">{fee.item}</td>
-                      <td className="px-4 py-3 text-[#636366]">{fee.spec}</td>
-                      <td className="px-4 py-3 font-bold text-[#0071E3]">{fee.price}</td>
+                    <tr key={idx} className="hover:bg-[#FAF9F8]">
+                      <td className="px-4 py-3 font-semibold text-[#111111]">{fee.item}</td>
+                      <td className="px-4 py-3 text-[#555555]">{fee.spec}</td>
+                      <td className="px-4 py-3 font-bold font-mono text-[#A67C52]">{fee.price}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <p className="mt-3 text-xs text-[#8E8E93]">
+            <p className="mt-3 text-xs text-[#777777]">
               * 註：行情價依各地區、施工難度與樓層可能略有浮動，簽約前請務必請店家註明超長收費標準。
             </p>
           </div>
@@ -244,10 +244,10 @@ export function AcInstallChecklist() {
         const stageConfig = STAGE_CONFIG[stage];
 
         return (
-          <div key={stage} className="apple-card overflow-hidden border border-black/[0.05] bg-white">
-            <div className="border-b border-black/[0.04] bg-[#F9F9FB] px-6 py-3.5 flex items-center justify-between">
-              <h3 className="text-sm font-bold text-[#1C1C1E]">{stageConfig.name}</h3>
-              <span className="rounded-md bg-black/[0.05] px-2 py-0.5 text-[11px] font-semibold text-[#636366]">
+          <div key={stage} className="skm-card overflow-hidden border border-black/[0.08] bg-white shadow-2xs">
+            <div className="border-b border-black/[0.05] bg-[#FAF9F8] px-6 py-3.5 flex items-center justify-between">
+              <h3 className="text-sm font-bold text-[#111111]">{stageConfig.name}</h3>
+              <span className="rounded-md bg-white px-2 py-0.5 text-[11px] font-semibold text-[#555555] border border-black/[0.06]">
                 {stageConfig.badge}
               </span>
             </div>
@@ -260,7 +260,7 @@ export function AcInstallChecklist() {
                     key={item.id}
                     className={`flex cursor-pointer items-start gap-3.5 rounded-xl p-3.5 transition-all ${
                       isChecked
-                        ? "bg-[#34C759]/[0.04]"
+                        ? "bg-[#FAF9F8]"
                         : "hover:bg-black/[0.02]"
                     }`}
                   >
@@ -270,8 +270,8 @@ export function AcInstallChecklist() {
                         onClick={() => toggleItem(item.id)}
                         className={`flex h-5 w-5 items-center justify-center rounded-full border transition-all ${
                           isChecked
-                            ? "border-[#34C759] bg-[#34C759] text-white"
-                            : "border-[#C7C7CC] bg-white hover:border-[#8E8E93]"
+                            ? "border-[#A67C52] bg-[#A67C52] text-white"
+                            : "border-black/[0.2] bg-white hover:border-[#A67C52]"
                         }`}
                       >
                         {isChecked && (
@@ -284,13 +284,13 @@ export function AcInstallChecklist() {
 
                     <div className="flex-1 select-none">
                       <p
-                        className={`text-sm font-semibold transition-colors ${
-                          isChecked ? "text-[#248A3D] line-through decoration-black/30" : "text-[#1C1C1E]"
+                        className={`text-sm font-bold transition-colors ${
+                          isChecked ? "text-[#A67C52] line-through decoration-black/30" : "text-[#111111]"
                         }`}
                       >
                         {item.label}
                       </p>
-                      <p className="mt-1 text-xs leading-relaxed text-[#636366]">
+                      <p className="mt-1 text-xs leading-relaxed text-[#555555]">
                         {item.detail}
                       </p>
                     </div>
